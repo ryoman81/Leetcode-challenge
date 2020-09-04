@@ -1,4 +1,4 @@
-class LinkedList {
+export default class LinkedList {
     constructor (value) {
         // head follows the entire LL structure
         this.head = {
@@ -81,6 +81,38 @@ class LinkedList {
         this.length--;
     }
 
+    reverse () {
+        if (this.length === 1) {
+            return;
+        }
+
+        this.tail = this.head;
+
+        let left = this.head;
+        let middle = left.next;
+        // loop over items and stop when right = null
+        while (middle) {
+            // store the right item 
+            const right = middle.next;
+            
+            ////////////////////////////////////////////////////
+            //    This is the core part: at each iteration,   // 
+            //    we only CHANGE POINTER of current item      //
+            //    from right to left.                         //
+            ////////////////////////////////////////////////////
+            middle.next = left;
+
+            // Shift the center pointer //
+            left = middle;
+            middle = right;
+        }
+
+        // dealing with the last item since we stopped at null
+        this.head.next = null;
+        this.head = left;
+    }
+
+
     printList () {
         const array = [];
         let currentNode = this.head;
@@ -88,7 +120,7 @@ class LinkedList {
             array.push(currentNode.value);
             currentNode = currentNode.next;
         }
-        console.log(array);
+        console.log(array, this.length);
     }
 }
 
@@ -98,5 +130,8 @@ myLinkedList.append(16);
 myLinkedList.prepend(1);
 myLinkedList.insert(2, 99);
 myLinkedList.insert(20, 88);
-myLinkedList.remove(5);
+myLinkedList.printList();
+myLinkedList.remove(2);
+myLinkedList.printList();
+myLinkedList.reverse();
 myLinkedList.printList();
