@@ -1,4 +1,4 @@
-export default class LinkedList {
+class LinkedList {
     constructor (value) {
         // head follows the entire LL structure
         this.head = {
