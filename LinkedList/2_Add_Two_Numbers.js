@@ -24,13 +24,15 @@ const addTwoNumbers = function (l1, l2) {
     let sum = 0;
     let carry = 0;
     
-    while (true) {
+    while (l1 || l2 || carry) {
         sum = carry;
         if (l1) {
             sum += l1.val;
+            l1 = l1.next;
         }
         if (l2) {
             sum += l2.val;
+            l2 = l2.next;
         }
         
         if (sum < 10) {
@@ -39,33 +41,9 @@ const addTwoNumbers = function (l1, l2) {
             carry = 1;
             sum = sum - 10;
         }
-        pointer.val = sum;
-        
-        // if l1 l2 have next
-        if (l1.next || l2.next) {
-            pointer.next = new ListNode();
-            pointer = pointer.next;
-            if (!l1.next) {
-                l1 = 0;
-                l2 = l2.next;
-                continue;
-            }
-            if (!l2.next) {
-                l1 = l1.next;
-                l2 = 0;
-                continue;
-            }
-            l1 = l1.next;
-            l2 = l2.next;
-        // if l1 l2 end but has a carry
-        } else if (carry) {
-            pointer.next = new ListNode(1);
-            break;
-        // if l1 l2 end and has no carry
-        } else {
-            break;
-        }
+        pointer.next = new ListNode(sum);
+        pointer = pointer.next;
     }
     
-    return head;
+    return head.next;
 };
