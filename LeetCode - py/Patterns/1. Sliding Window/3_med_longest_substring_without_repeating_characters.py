@@ -11,7 +11,7 @@ Constraints:
 s consists of English letters, digits, symbols and spaces.
 '''
 
-#### Define the answer code class named Solution
+
 class Solution:
     '''
     MY CODE VERSION
@@ -24,7 +24,7 @@ class Solution:
       Time: O(n)
       Space: O(n)
     '''
-    def lengthOfLongestSubstring(self, s: str) -> int:
+    def lengthOfLongestSubstring(self, s: str):
         longest = 0
         window = []     # O(n)
         # loop over string
@@ -50,21 +50,40 @@ class Solution:
     '''
     THE OPTIMAL CODE VERSION
     Improvement:
-      1.
+      - Since a window array may take more space, using HashTable can benefit
+      - HashTable also resolved index() problem in Python (no need to use try-except-catch)
+      - Here use left and right pointers
     Thought:
-      1. Using a list as sliding window
-      2. Right move the right-side to meet incoming char
-      3. Check if the incoming char exists in the window
-      4. If exists then move left-side to this new location
+      1. Loop over to move right pointer till end
+      2. Check if the incoming char is in hashtable
+      3. If exist, move left pointer rightwards and remove other record until meet right
     Complexity:
-      Time: 
-      Space:
+      Time: O(n)
+      Space: O(1)
     '''
-    def lengthOfLongestSubstringOpt(self, s: str) -> int:
-        return 0
+    def lengthOfLongestSubstringOpt(self, s: str):
+        hashTable = {}
+        left = 0
+        result = 0
+        # right pointer loops over string
+        for right in range(len(s)):
+            # check if right pointer in table
+            if s[right] in hashTable:
+                # if in table then move left pointer to there
+                # at the same time remove all records between left and right
+                index = hashTable[s[right]]
+                while left <= index:
+                    del hashTable[s[left]]
+                    left += 1
+            # record the current right pointer
+            hashTable[s[right]] = right
+            # update longest if have
+            if (right-left+1) > result:
+                result = right-left+1
+        return result
 
 
-#### Run code after defining input and solver
-input = 'fdgdsgsdfg'
-solver = Solution().lengthOfLongestSubstring
+## Run code after defining input and solver
+input = ''
+solver = Solution().lengthOfLongestSubstringOpt
 print(solver(input))
