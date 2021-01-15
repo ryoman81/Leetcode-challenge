@@ -78,7 +78,8 @@ class Solution:
             hashTable[s[left]] += 1
             if hashTable[s[left]] > 0:
               count -= 1
-          left += 1      
+          left += 1
+              
       return result
 
 
