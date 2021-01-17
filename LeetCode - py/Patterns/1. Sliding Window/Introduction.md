@@ -26,7 +26,7 @@
 - 3. Longest Substring Without Repeating Characters (med)
 - 76. Minimum Window Substring (hard)
 - 239. Sliding Window Maximum (hard)
-- 340. Longest Substring with At Most K Distinct Characters (med)
+- 340. Longest Substring with At Most K Distinct Characters (hard)
 
 Other listed by the reference
 
@@ -40,4 +40,84 @@ Other listed by the reference
 - https://leetcode-cn.com/problems/permutation-in-string/solution/yong-substring-sliding-windowmo-ban-xie-de-jie-fa-/
 
 ## **模板 Template:**
+### **Python**
+```py
+def slidingWindow(str, tar):
+	## Check the constraint
+	if condition: 
+		return ""
 
+	## Initialize hash table to record target change
+	hashTable = {}
+	for char in tar:
+	
+	## Initialize common variables for sliding window problem
+	left = 0        # left pointer
+	result = ""     # the returning result
+	count = 0       # conditioning count
+
+	## Loop over the main string by moving the right pointer
+	for right in range(len(s)):
+		## Update the right most char in hash table
+		if s[right] in hashTable:
+			
+			## count up if eligibly capture a target char
+				count =
+
+		## Check the count condition
+		while condition:
+			## usually update left and count at this place  
+			if condition:
+				count =
+			left =
+
+		## Update result after while loop or within while loop
+		result = 
+
+	## return result        
+	return result
+```
+
+### **JavaScript**
+```js
+function slidingWindow (str, tar) {
+	// Check the constraint
+	if (condition) {
+		return "";
+	}
+
+	// Initialize hash table to record target change
+	const hashTable = {};
+	for (let i = 0; i < tar.length; i++) {
+		hashTable[tar[i]] = ;
+	}
+	
+	// Initialize common variables for sliding window problem
+	let left = 0;       // left pointer
+	let result = "";    // the returning result
+	let count = 0;      // conditioning count
+
+	// Loop over the main string by moving the right pointer
+	for (let right = 0; right < str.length; right++ ){
+		// Update the right most char in hash table
+		if (!hashTable[str[right]]) {
+			hashTable[str[right]] = ;
+			// count up if eligibly capture a target char
+				count = ;
+		}
+		// Check the count condition
+		// usually update left and count at this place  
+		while (condition) {
+			if (condition) {
+				count = ;
+			}
+			left = ;
+		}
+		// Update result after while loop or within while loop
+		result = ;
+	}
+
+	// return result        
+	return result;
+}
+```
