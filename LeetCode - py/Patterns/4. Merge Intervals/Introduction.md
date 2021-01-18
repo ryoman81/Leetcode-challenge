@@ -32,7 +32,8 @@ Interval这个概念在算法题中时有出现, 就是一个区间(start, end)�
 
 ## **参考链接 Reference:**
 
-- https://zhuanlan.zhihu.com/p/26657786 
+- https://zhuanlan.zhihu.com/p/26657786
+- https://www.paincker.com/leetcode-intervals 
 
 ## **模板 Template:**
 ### **Python**
