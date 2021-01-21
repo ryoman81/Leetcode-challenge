@@ -13,7 +13,7 @@
 Interval这个概念在算法题中时有出现, 就是一个区间(start, end)。可是这类题目做起来，却往往不那么简单。常见情况下, interval问题使用下面三个思路:
 - **Sorting:** 在一般情况下，按照interval的start升序排序，在必要情况下，对于start相同的interval，按照interval的end的降序排序。
 - **Greedy:** 有时候是两个interval之间的greedy，有时候是一群interval之间的greedy。
-- *OTHER:* 用到了自平衡二叉树，比如c++里就是map，用红黑树实现的。当前两个思路不行时,考虑这个.
+- **other:** 用到了自平衡二叉树，比如c++里就是map，用红黑树实现的。当前两个思路不行时,考虑这个.
 
 ## **经典题目:**
 
