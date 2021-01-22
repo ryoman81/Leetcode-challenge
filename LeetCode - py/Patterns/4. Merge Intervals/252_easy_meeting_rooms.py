@@ -27,10 +27,12 @@ class Solution:
   def canAttendMeetings(self, intervals):
     # sort intervals by the starting time
     intervals.sort(key=lambda itv: itv[0])
-    # loop over intervals and check if the next starting time is earlier than the current end time
+    # loop over intervals
     for i in range(1, len(intervals)):
+      # check if the next starting time is earlier than the current end time
       if intervals[i][0] < intervals[i-1][1]:
         return False
+    # if no false returned then no overlapping, hence return true 
     return True
 
 

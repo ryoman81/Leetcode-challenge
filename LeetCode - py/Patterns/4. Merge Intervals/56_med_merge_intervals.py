@@ -29,8 +29,8 @@ class Solution:
     1. Ascend sort the starting time of each interval
     2. Merge intervals one by one by comparing the end time 
   Complexity:
-    Time: O(nlogn)
-    Space: O(1)
+    Time: O(nlogn)  sorting cmplx
+    Space: O(n)
   '''
   def mergeOpt(self, intervals):
     if len(intervals) < 2:
@@ -38,7 +38,7 @@ class Solution:
     # sort the intervals in place
     intervals.sort(key=lambda itv: itv[0])
     result = []
-    # instead of using pointers, using Python index and for loop
+    # instead of using pointers, using Python indexing and for loop
     for itv in intervals:
       # if the current result interval cannot be merged
       #js code: if (result.length===0) || result[result.length-1][1]<itv[0]{...}

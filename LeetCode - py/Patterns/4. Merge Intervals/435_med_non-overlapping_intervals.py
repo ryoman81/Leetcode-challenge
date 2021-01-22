@@ -25,27 +25,14 @@ Intervals like [1,2] and [2,3] have borders "touching" but they don't overlap ea
 
 class Solution:
   '''
-  THE OPTIMAL CODE VERSION
-  Improvement:
-    1.
-  Thought:
-    1.  
-  Complexity:
-    Time: O()
-    Space: O()
-  '''
-  def eraseOverlapIntervalsOpt(self, intervals):
-    return 0
-
-  '''
   MY CODE VERSION
   Thought:
     1. Sort the intervals
     2. Loop over intervals if overlap meet remove one
     3. Use pointers. no need to remove intervals
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(nlogn)
+    Space: O(1)
   '''
   def eraseOverlapIntervals(self, intervals):
     result = 0
@@ -61,8 +48,8 @@ class Solution:
         # increment result denoting that we need to remove one interval
         result += 1
         # then consider which interval to remove
-        # we choose to remove interval with late end time 
-        # if comparing target has later end time, remove it and change comparing target to the current one
+        # we choose to remove interval with LATE end time 
+        # if comparing target has later end time, remove it by changing comparing pointer to the current one
         if intervals[cmp][1] > intervals[i][1]:
           cmp = i
       # if no overlap then move pointer of comparing target to the current index

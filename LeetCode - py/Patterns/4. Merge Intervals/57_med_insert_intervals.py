@@ -28,24 +28,16 @@ newInterval.length == 2
 class Solution:
   '''
   THE OPTIMAL CODE VERSION
-  Improvement:
-    1.
   Thought:
-    1.  
+    - Since the intervals are sorted by the starting time, it is good to start looping directly
+    - Loop over the intervals in three phases
+       1. loop over intervals while ending time is earlier than the start time of target 
+       2. once the first loop break, it means a conflict meets
+       3. then start the second while-loop until: the end time of target is ealier than the current interval
+       4. lastly, append the remaining intervals to the result list
   Complexity:
-    Time: O()
-    Space: O()
-  '''
-  def insertOpt(self, intervals, newInterval):
-    return 0
-
-  '''
-  MY CODE VERSION
-  Thought:
-    1. 
-  Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n)
+    Space: O(n)
   '''
   def insert(self, intervals, newInterval):
     # check if empty of intervals
@@ -61,12 +53,12 @@ class Solution:
       crr += 1
     
     # now we meet a potential overlap between current interval and new interval
-    # loop over from current interval until the end time of new interval is larger than the start time of current interval
-    while crr < len(intervals) and newInterval[1] >= intervals[crr][0]:
-      # if not meet the requirement then merge then and update new interval
+    # loop over from current interval UNTIL the end time of new interval is EALIER than the start time of current interval
+    while crr < len(intervals) and intervals[crr][0] <= newInterval[1]: # < -- this is the condition to break that resolves the overlap 
+      # update target interval directly to meet the condition
       newInterval[0] = min(newInterval[0], intervals[crr][0])
       newInterval[1] = max(newInterval[1], intervals[crr][1])
-      crr += 1
+      crr += 1 # don't forget to move up the current pointer
     # once out the while loop append this merged new interval to the result list
     result.append(newInterval)
     
