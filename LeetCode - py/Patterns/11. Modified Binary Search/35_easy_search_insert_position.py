@@ -24,25 +24,14 @@ nums contains distinct values sorted in ascending order.
 
 class Solution:
   '''
-  THE OPTIMAL CODE VERSION
-  Improvement:
-    1.
-  Thought:
-    1.  
-  Complexity:
-    Time: O()
-    Space: O()
-  '''
-  def functionOpt(self):
-    return 0
-
-  '''
   MY CODE VERSION
   Thought:
-    1. 
+    - This is the exact form of binary search template
+    - Only change the final returning value if no target found
+    - The considering part is what to return if no target found (see comment)
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(logn)
+    Space: O(1)
   '''
   def searchInsert(self, nums, target):
     left = 0
@@ -56,12 +45,13 @@ class Solution:
         left = mid + 1
       else:
         right = mid - 1
-
+    # if exthausted while loop: the left point came to the position that ONE STEP LARGET THAN TARGET
+    # which means if the target is inserted, it will take this left location!
     return left
 
 
 ## Run code after defining input and solver
-input1 = [1,3,5,6]
-input2 = 0
+input1 = [1,2,3,4,5,6,7,8,9]
+input2 = 3.5
 solver = Solution().searchInsert
 print(solver(input1, input2))

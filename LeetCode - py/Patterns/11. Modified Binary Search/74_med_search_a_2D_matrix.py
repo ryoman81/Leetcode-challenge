@@ -23,31 +23,24 @@ n == matrix[i].length
 class Solution:
   '''
   THE OPTIMAL CODE VERSION
-  Improvement:
-    1.
   Thought:
-    1.  
+    In this 2D matrix (array), we use two binary search one after another
+      - becuase from [0][0] to [m][n] it goes all the way up monoly
+      - then search by the first element of each row
+      - find the target row and search within the row
   Complexity:
-    Time: O()
-    Space: O()
-  '''
-  def functionOpt(self):
-    return 0
-
-  '''
-  MY CODE VERSION
-  Thought:
-    1. 
-  Complexity:
-    Time: O()
-    Space: O()
+    Time: O(logn)
+    Space: O(1)
   '''
   def searchMatrix(self, matrix, target):
     m = len(matrix)
     n = len(matrix[0])
+    up = 0
+    down = m-1
+    left = 0
+    right = n-1
 
-    up, down, left, right = 0, m-1, 0, n-1
-
+    # search the target row
     while up <= down:
       center = (up + down) // 2
       if matrix[center][0] == target:
@@ -57,8 +50,10 @@ class Solution:
       else:
         down = center - 1
 
+    # a key step: be sure to decease row by 1 because when stopping, up is over the target value by 1
     up -= 1
 
+    # search target within target row
     while left <= right:
       mid = (left + right) // 2
       if matrix[up][mid] == target:
