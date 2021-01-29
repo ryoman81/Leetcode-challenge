@@ -32,17 +32,6 @@ class Solution:
     Time: O()
     Space: O()
   '''
-  def functionOpt(self):
-    return 0
-
-  '''
-  MY CODE VERSION
-  Thought:
-    1. 
-  Complexity:
-    Time: O()
-    Space: O()
-  '''
   def findClosestElements(self, arr, k, x):
     left = 0
     right = len(arr) - k

@@ -33,25 +33,14 @@ def isBadVersion (n):
 
 class Solution:
   '''
-  THE OPTIMAL CODE VERSION
-  Improvement:
-    1.
-  Thought:
-    1.  
-  Complexity:
-    Time: O()
-    Space: O()
-  '''
-  def functionOpt(self):
-    return 0
-
-  '''
   MY CODE VERSION
   Thought:
-    1. 
+    - Same as the 34 the part that search for the left boundary
+    - Hence the point is to exhaust the while loop and return the meeting point (left and right hit together, usually use left)
+    - special point is: the indexing started from 1 but we still follow left and right close rule [left, right] not [left, right)
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(logn)
+    Space: O(1)
   '''
   def firstBadVersion(self, n):
     left = 1
@@ -60,6 +49,7 @@ class Solution:
     while left <= right:
       mid = left + (right-left)//2
       
+      # this is the same expression of: if(nums[mid] < target)
       if not isBadVersion(mid):
         left = mid + 1
       else:
