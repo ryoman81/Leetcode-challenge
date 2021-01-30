@@ -25,12 +25,15 @@ class Solution:
   '''
   THE OPTIMAL CODE VERSION
   Improvement:
-    1.
+    Think the output window should be [left, left+k), which is left closure and right open form
+    Here we should better use the other form of template that
+      1. left = 0, right = len(arr), then shift right by k and becomes right = len(arr) - k
+      2. while-loop condition goes without equal sign that left < right
   Thought:
     1.  
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(logn)
+    Space: O(1)
   '''
   def findClosestElements(self, arr, k, x):
     left = 0

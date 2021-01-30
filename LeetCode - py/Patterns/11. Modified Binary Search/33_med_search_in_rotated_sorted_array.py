@@ -32,7 +32,7 @@ class Solution:
         b) stick on left close and right close template in the most case
   Thought:
     1. there must be one sorted portion in left-mid or mid-right
-    2. compare mid with left (因为我是左撇子) using <=, because mid may overlap with left
+    2. compare mid with right (if with left there are some other issues -> ref: 81)
     3. put target in this region and check if within, then norrow a half of interval
   Complexity:
     Time: O(logn)
