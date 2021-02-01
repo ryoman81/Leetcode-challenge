@@ -86,7 +86,7 @@ class Solution:
       crr = nums[i]
       # we don't move the number n because the index n outside the range
       # after while-loop, the n will be placed on the position of missing value
-      if crr < len(nums) and crr != i:
+      if crr < len(nums) and crr != nums[crr]:
         nums[i], nums[crr] = nums[crr], nums[i]
       else:
         i += 1
@@ -99,6 +99,6 @@ class Solution:
 
 
 ## Run code after defining input and solver
-input = [0,6,4,2,3,5,7,8,1]
+input = [0,6,4,2,3,5,7,9,1]
 solver = Solution().missingNumber
 print(solver(input))
