@@ -29,7 +29,7 @@ Binary Search 是一类模板性很强的题目, 以**模板优先**. 二分查�
 ### **要点总结**
 做了八道题了, 有几个很明显的要点需要总结, 
   1. **mid有可能等于left** 因此在边界判断, 无限循环到头, 等一些场景应用, conditioning当中的判断语句, 对于< <= > >= 的选择可以借此加以考虑 (33,34)
-  2. **rotate array 判断哪一边是sorted时, 统一用右边界** 因为81当出现duplicated时候, 用左边界判断mid和left没法确定是否sorted (33,81)
+  2. **rotate array 判断哪一边是sorted时, 统一用右边界** 因为81当出现duplicated时候, 用左边界判断mid和left没法确定是否sorted (33,81) 但可以解决. 关键点请**保持模板一致性**!
   3. **left 会停在比target大一个单位的位置** 当寻找某个target刚好大于left的时候, 需要穷尽while loop. 当走出while loop之后, left会停在刚好比target大一个单位的地方. (35,74)
   4. **无target时, indexing非常困扰(153)** 单独案例分析吧...
 
