@@ -8,7 +8,7 @@ LinkedList 题型无非涵盖了基础操作: **增, 删, 改, 查**, 以及常�
 
 - 21. Merge two sorted lists (easy)
 - 23. Merge k sorted lists (hard)
-- 148. Sort list (148)
+- 148. Sort list (med) [move to topic 3]
 - 160. Intersection of two linked list (easy)
 - 206. Reverse linked list (easy)
 - 234. Palindrome linked list (easy)
