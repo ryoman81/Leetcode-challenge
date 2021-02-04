@@ -17,17 +17,15 @@ LinkedList 题型无非涵盖了基础操作: **增, 删, 改, 查**, 以及常�
 **其它题目**
 2 19 25 61 82 83 86 92 141 142 
 
+## 个人经验总结
+
+三天快速把所有基础的linked list 题目都做了一遍, 虽然很多是easy题目, 但是对独特的数据结构, 还是很多操作不方便. 最大的特点就是无法按照index 索引某一项. 任何情况下都只能通过next去推进
+有两个特殊点可以总结:
+- 题目21, 合并两个sorted lists被当作通用的方法运用在了sorting 和 merge k这两道常用题当中. 也因此这三道题成为了非常高频的题目
+- 对list的翻转, 删除节点的操作都是通过修改.next指针来完成, 因此多多回顾这几道题, 以及之前学习中的linkedlist data structure
+
+本topic就不设计通用模板了
+
 ## **参考链接 Reference:**
 
 - https://leetcode.com/problemset/all/?topicSlugs=linked-list&listId=wpwgkgt
-
-## **模板 Template:**
-### **Python**
-```py
-
-```
-
-### **JavaScript**
-```js
-
-```
