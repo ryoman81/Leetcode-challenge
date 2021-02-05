@@ -24,8 +24,9 @@ LinkedList 题型无非涵盖了基础操作: **增, 删, 改, 查**, 以及常�
 - 题目21, 合并两个sorted lists被当作通用的方法运用在了sorting 和 merge k这两道常用题当中. 也因此这三道题成为了非常高频的题目
 - 对list的翻转, 删除节点的操作都是通过修改.next指针来完成, 因此多多回顾这几道题, 以及之前学习中的linkedlist data structure
 
-本topic就不设计通用模板了
+本topic就不设计通用模板了, 按照reference 2说的, 掌握了148当中的一些操作就很吊了
 
 ## **参考链接 Reference:**
 
 - https://leetcode.com/problemset/all/?topicSlugs=linked-list&listId=wpwgkgt
+- https://www.cxyxiaowu.com/9726.html
