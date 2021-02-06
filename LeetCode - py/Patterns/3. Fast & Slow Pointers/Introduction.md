@@ -24,6 +24,28 @@
 
    遍历链表，快慢指针分别往后查找，直到 null，要求的结果就是慢指针指向的结点
 
+3. 对于特定题型 141 和 142 还有之前做过的160 以及其他的扩展问题, 使用快慢指针在一个带有环的list上运行, 我们可以借助这个神图来了解他们走过的距离.
+
+   <img src="https://images0.cnblogs.com/blog/354747/201311/05171805-64db9f059a1641e7afaf3dd8223c4fe7.jpg" />
+
+   X: 起点位置
+   
+   Y: 环的结点位置
+   
+   Z: fast slow 相遇的位置
+
+   当中的距离有某种神秘的关系!! 假定前提是fast = 2*slow 速度, 那么会有
+
+   2(a+b) = a+b+c+b ===> **a = c**
+
+   那么对几类延展问题便可以推断出:
+
+   **环的节点:** 当fast从Z出发, slow从X出发, 以相同速度前行. 遇见之处就是结点
+   
+   **环的长度:** 从一开始fast, slow出发之后到在Z点遇见时,循环的次数即是环的长度
+   
+   **环的解套:** 根据上一点环的长度, 将指针走a+b+c-1步的那个结点处断裂即可解套
+
 ## **经典题目:**
 
 - 19. Remove Nth node from end of list (med)
@@ -36,15 +58,26 @@
 ## **参考链接 Reference:**
 
 - https://zhuanlan.zhihu.com/p/38521018
-- https://www.cxyxiaowu.com/9726.html 
+- https://www.cxyxiaowu.com/9726.html
+- https://www.cnblogs.com/hiddenfox/p/3408931.html
 
 ## **模板 Template:**
 ### **Python**
 ```py
-	
-```
-
-### **JavaScript**
-```js
-
+def fastSlowPointers (list):
+   # usually we initial fast and slow pointers to the head of list
+   fast = list
+   slow = list
+   # in some problem the fast pointer is advanced of slow pointer by n steps
+   for i in len(n):
+      fast = fast.next
+   # then in a while-loop we usually check for either one of these purposes
+   # 1. if fast catch up on the slow (for those cycle list)
+   # 2. or if fast hit the tail
+   while fast and fast.next:
+      # advance fast and slow pointers in a speed ratio
+      slow = slow.next
+      fast = fast.next.next
+      # do a conditional judgement
+      if condition:
 ```
