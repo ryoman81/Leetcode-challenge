@@ -55,6 +55,9 @@
 - 203. Remove linked list elements (easy)
 - 876. Middle of the linked list (easy)
 
+**其它数组类型题目**
+27 283 26 80 
+
 ## **参考链接 Reference:**
 
 - https://zhuanlan.zhihu.com/p/38521018
