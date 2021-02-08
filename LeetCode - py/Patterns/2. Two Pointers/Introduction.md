@@ -30,12 +30,12 @@
 
 ## **经典题目:**
 
-**Sum 类型**
+**Sum 类型 (同向指针)**
 - 167. Two Sum II in sorted array (easy)
 - 15. 3Sum (med)
 - 16. 3Sum Closest (med)
 
-**同向双指针类型**
+**同向双指针经典题目**
 - 11. Container with Most Water (med)
 - 42. Trapping Rain Water (hard)
 
@@ -51,7 +51,4 @@
 - https://juejin.cn/post/6844903881588080648
 
 ## **模板 Template:**
-### **Python**
-```py
-
-```
+仅仅是一些思路, two pointers 涵盖的题型太过广泛, 其他章节已经涉及到了不少. 这一章节题目全部都是两边夹击型的双指针. 对 Sums 和 经典题型, two pointers 往往是在一个数组 (很可能是排序好的数组) 两头进行. 移动pointer的原则往往根据题目来判断. while (left < right) 则是最外层的大循环.
