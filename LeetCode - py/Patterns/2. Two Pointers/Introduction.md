@@ -39,9 +39,8 @@
 - 11. Container with Most Water (med)
 - 42. Trapping Rain Water (hard)
 
-**快慢指针类型 (已放入topic 3 快慢指针章节. 请回头去补充!)**
-- 27. Remove element (easy)
-- 283. Move zeros (easy)
+**其它还么做 (应该简单吧)**
+26 80
 
 ## **参考链接 Reference:**
 

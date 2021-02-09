@@ -51,12 +51,13 @@
 - 19. Remove Nth node from end of list (med)
 - 141. Linked list cycle (easy)
 - 142. Linked list cycle II (med)
-- 202. Happy number (easy)
 - 203. Remove linked list elements (easy)
 - 876. Middle of the linked list (easy)
 
-**其它数组类型题目**
-27 283 26 80 
+**非链表题型**
+- 27. Remove element (easy)
+- 283. Move zeros (easy)
+- 202. Happy number (easy)
 
 ## **参考链接 Reference:**
 
