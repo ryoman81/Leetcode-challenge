@@ -27,8 +27,9 @@ class Solution:
   Thought:
     This first solution use fast slow pointers (the next one uses left right pointers)
       - We iterate fast pointer to the end of array
-      - 
-
+      - The slow pointer is on track of the top of the front part of the array who contains no target value
+      - whenever fast pointer meet a non target value, put it to slow position and advance both pointers
+      - the actions will result in a situation that all target values are moved to the tail of array
   Complexity:
     Time: O(n)
     Space: O(1)
