@@ -27,7 +27,7 @@ class Solution:
       - Return the depth once a node has no left or right child
   Complexity:
     Time: O(n)
-    Space: O(1); worst O(n) if height=numNodes
+    Space: O(1)
   '''
   def minDepth(self, root: TreeNode) -> int:
     if not root:

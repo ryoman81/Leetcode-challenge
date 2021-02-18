@@ -23,7 +23,7 @@ class Solution:
       - Use a variable leftMost to record the left most node value
   Complexity:
     Time: O(n)
-    Space: O(1); worst O(n) if height=numNodes
+    Space: O(1)
   '''
   def findBottomLeftValue(self, root):
     if not root:
