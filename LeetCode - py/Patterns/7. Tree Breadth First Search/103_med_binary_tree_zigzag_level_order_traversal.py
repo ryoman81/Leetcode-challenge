@@ -22,10 +22,11 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    A standard BFS traversal by layers. Compared to 102:
+      - Use an additional variable isFromLeft to determine the order in current layer
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n)
+    Space: O(n)
   '''
   def levelOrder(self, root):
     if not root: 
@@ -42,20 +43,18 @@ class Solution:
       for i in range(crrLevelSize):
         node = queue.pop(0)
         if isFromLeft:
-          crrLevel.append(node.val)
+          crrLevel.append(node.val)     # create crrLevel from left to right
         else:
-          crrLevel.insert(0, node.val)
+          crrLevel.insert(0, node.val)  # create crrLevel from right to left
 
         if node.left: queue.append(node.left)
         if node.right: queue.append(node.right)
               
       result.append(crrLevel)
-      isFromLeft = not isFromLeft
+      isFromLeft = not isFromLeft       # toggle isFromLeft for next layer
         
     return result
 
 
-## Run code after defining input and solver
-input = ''
-solver = Solution().function
-print(solver(input))
+## Since we don't have tree class and a tree creating method
+## We don't do test in local environment. Please use LeetCode editor for testing

@@ -22,10 +22,11 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    This is a standard question of BFS in a binary tree. Follow template should be good
+    We need to use an array to record all nodes value in a single layer
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n)
+    Space: O(n)
   '''
   def levelOrder(self, root):
     if not root: 
@@ -49,7 +50,5 @@ class Solution:
     return result
 
 
-## Run code after defining input and solver
-input = ''
-solver = Solution().function
-print(solver(input))
+## Since we don't have tree class and a tree creating method
+## We don't do test in local environment. Please use LeetCode editor for testing

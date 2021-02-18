@@ -22,10 +22,11 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    A standard BFS traversal by layers. Compared to 102:
+      - We create the final result array from bottom to up
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n)
+    Space: O(n)
   '''
   def levelOrder(self, root):
     if not root: 
@@ -44,12 +45,10 @@ class Solution:
         if node.left: queue.append(node.left)
         if node.right: queue.append(node.right)
               
-      result.insert(0, crrLevel)
+      result.insert(0, crrLevel)  # put the current layer to the front of the result array
         
     return result
 
 
-## Run code after defining input and solver
-input = ''
-solver = Solution().function
-print(solver(input))
+## Since we don't have tree class and a tree creating method
+## We don't do test in local environment. Please use LeetCode editor for testing

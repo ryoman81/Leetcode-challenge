@@ -21,10 +21,12 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    A standard BFS traversal by layers. Compared to 102:
+      - A node may have multiple children rather than left and right
+      - We loop over all child at a single node
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n)
+    Space: O(n)
   '''
   def levelOrder(self, root):
     if not root:
@@ -39,9 +41,8 @@ class Solution:
       
       for i in range(crrLevelSize):
         node = queue.pop(0)
-        
         crrLevel.append(node.val)
-        
+        # loop over all children rather than left and right
         for kid in node.children:
           queue.append(kid)
       
@@ -50,7 +51,5 @@ class Solution:
     return result
 
 
-## Run code after defining input and solver
-input = ''
-solver = Solution().function
-print(solver(input))
+## Since we don't have tree class and a tree creating method
+## We don't do test in local environment. Please use LeetCode editor for testing
