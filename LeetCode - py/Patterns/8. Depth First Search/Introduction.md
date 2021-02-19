@@ -40,6 +40,9 @@ def inDFS (node):
 
 在pre-order 前序遍历方法中, 处理node的顺序是和访问节点顺序一致. 根据前序遍历出来的序列数组也是最容易还原出一颗二叉树结构. 
 
+掌握树上的BFS遍历之后, 进而下一类问题就是树上路径的遍历. 可以想象, 前者是遍历整棵树的节点进而保存下来, 而路径遍历后者是遍历树中所有可能的路径. 这类问题非常火, 诸如 Path Sum 的众多变种. 请参考:
+ref: https://zhuanlan.zhihu.com/p/112370893 
+
 ## **经典题目:**
 
 ### **Tree DFS: 针对树的深度度优先算法题**
@@ -54,7 +57,22 @@ def inDFS (node):
 
 **DFS在树上的路径问题:**
 
+- 112. Path Sum (高频经典)
+- 113. Path Sum II
+- 124. Binary tree maximum path sum
+- 257. Binary tree paths
+- 129. Sum root to leaf numbers
+
+
 **DFS在树上的祖先问题:**
+235 236 
+
+**DFS在树上的高频题:**
+
+98 101 105 108 114 199
+
+**DFS 高频应用题:**
+130 131 200 207 
 
 
 ## **参考链接 Reference:**

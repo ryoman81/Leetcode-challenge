@@ -43,7 +43,7 @@ class Solution:
 
 
 ## Run code after defining input and solver
-input1 = ListNode().create([1])
-input2 = 1
+input1 = ListNode().create([6,6,5,4,1,3,9])
+input2 = 6
 solver = Solution().removeElements
 print(solver(input1, input2).show())
