@@ -49,7 +49,3 @@ class TreeNode:
         if node.right: queue.append(node.right)
         result.append(node.val)  
     return result
-
-
-root = TreeNode().create([5,4,8,11,None,13,4,7,2,None,None,5,1])
-print(root.show())

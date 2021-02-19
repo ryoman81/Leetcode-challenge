@@ -21,6 +21,9 @@ The number of nodes in the tree is in the range [0, 5000].
 -1000 <= targetSum <= 1000
 '''
 
+# Import helper class TeeNode in this folder
+# It is the same as LeetCode one with additional methods show() and create()
+from TreeNode import TreeNode
 
 class Solution:
   '''
@@ -34,29 +37,30 @@ class Solution:
   
   def hasPathSum(self, root, targetSum):
     result = []
+    path = []
 
-    def DFS(node, sum, path):
+    def DFS(node, sum):
       # base case
       if not node:
         return
-    
+
+      path.append(node.val)
       # check if leaf
       if not node.left and not node.right:
         # check if leaf value is the same as input target
         if node.val == sum:
-          path.append(node.val)
-          result.append(path)
-        return
+          result.append(path.copy())
       
-      path.append(node.val)
-      path_left = path.copy()
-      DFS(node.left, sum-node.val, path_left)
-      path_right = path.copy()
-      DFS(node.right, sum-node.val, path_right)
+      DFS(node.left, sum-node.val)
+      DFS(node.right, sum-node.val)
+      path.pop()
 
-    DFS(root, targetSum, [])
+    DFS(root, targetSum)
     return result
 
 
-## Since we don't have tree class and a tree creating method
-## We don't do test in local environment. Please use LeetCode editor for testing
+## Run code after defining input and solver
+input1 = TreeNode().create([5,4,8,11,None,13,4,7,2,None,None,5,1])
+input2 = 22
+solver = Solution().hasPathSum
+print(solver(input1, input2))
