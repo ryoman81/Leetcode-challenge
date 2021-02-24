@@ -57,11 +57,12 @@ ref: https://zhuanlan.zhihu.com/p/112370893
 
 **DFS在树上的路径问题:**
 
-- 112. Path Sum (高频经典)
-- 113. Path Sum II
-- 124. Binary tree maximum path sum
-- 257. Binary tree paths
+- 112. Path Sum (高频经典) (easy)
+- 113. Path Sum II (med)
+- 257. Binary tree paths (easy)
 - 129. Sum root to leaf numbers
+- 437. Path Sum III (med)
+- 124. Binary tree maximum path sum (hard)
 
 
 **DFS在树上的祖先问题:**

@@ -17,6 +17,9 @@ class TreeNode:
     while arr:
       levelSize = len(queue)
       for i in range(levelSize):
+        # in some time, arr will become empty if the last leaves have null value
+        if not len(arr):
+          break
         # except for root value, we pop out two elements each time
         left = arr.pop(0)
         right = arr.pop(0)

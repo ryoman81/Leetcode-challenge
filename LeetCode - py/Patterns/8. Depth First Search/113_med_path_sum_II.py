@@ -43,12 +43,14 @@ class Solution:
       # base case
       if not node:
         return
-
+      ### 此处在闭包DFS中也要使用外层函数定义的变量path, 但不需要声明 nonlocal. 
+      ### 因为path声明的是数组, 作为数组的引用, 我们并没有直接修改path这个变量.
       path.append(node.val)
       # check if leaf
       if not node.left and not node.right:
         # check if leaf value is the same as input target
         if node.val == sum:
+          # KEY: we must append a hard copy of path to the result array, otherwise, path change, result changes
           result.append(path.copy())
       
       DFS(node.left, sum-node.val)

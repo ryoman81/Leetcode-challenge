@@ -50,7 +50,7 @@ class Solution:
       if not node.left and not node.right:
         if node.val == sum:
           # change closure variable
-          ### 这是python和js非常大的不同点, 如果不声明ifHasPath是外层变量, 则无法对其修改
+          ### 这是python和js非常大的不同点, 如果不声明ifHasPath是外层变量, 则无法对其修改 (只能进行访问)
           ### 必须要使用nonlocal关键字指定它定义在closure内
           ### 在JavaScript中则可直接对函数外层定义的ifHasPath进行更新
           nonlocal ifHasPath
