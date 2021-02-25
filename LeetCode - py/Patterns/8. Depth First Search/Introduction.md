@@ -60,7 +60,7 @@ ref: https://zhuanlan.zhihu.com/p/112370893
 - 112. Path Sum (高频经典) (easy)
 - 113. Path Sum II (med)
 - 257. Binary tree paths (easy)
-- 129. Sum root to leaf numbers
+- 129. Sum root to leaf numbers (med)
 - 437. Path Sum III (med)
 - 124. Binary tree maximum path sum (hard)
 
