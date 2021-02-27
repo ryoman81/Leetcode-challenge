@@ -18,7 +18,7 @@ from TreeNode import TreeNode
 
 class Solution:
   '''
-  MY CODE VERSION
+  OPTIMAL VERSION
   Thought:
     
   Complexity:
@@ -26,6 +26,34 @@ class Solution:
     Space: O()
   '''
   def buildTree(self, preorder, postorder):
+    def DFS (pre_start, pre_end, post_start, post_end):
+      if pre_start > pre_end:
+        return None
+      if pre_start == pre_end:
+        return TreeNode(preorder[pre_start])
+
+      node = TreeNode(preorder[pre_start])
+      i = postorder.index(preorder[pre_start+1])
+
+      newEnd = pre_start + 1 + (i-post_start)
+
+      node.left = DFS(pre_start+1, newEnd, post_start, i)
+      node.right = DFS(newEnd+1, pre_end, i+1, post_end-1)
+
+      return node
+    
+    return DFS(0, len(preorder)-1, 0, len(postorder)-1)
+
+
+  '''
+  SIMPLIFIED VERSION
+  Thought:
+    
+  Complexity:
+    Time: O(n)
+    Space: O()
+  '''
+  def buildTree2(self, preorder, postorder):
     # base case if the input array is empty
     if not preorder:
       return None

@@ -27,7 +27,7 @@ from TreeNode import TreeNode
 
 class Solution:
   '''
-  MY CODE VERSION
+  OPTIMAL CODE VERSION
   Thought:
     
   Complexity:
@@ -35,6 +35,35 @@ class Solution:
     Space: O()
   '''
   def buildTree(self, preorder, inorder):
+
+    def DFS (pre_start, pre_end, in_start, in_end):
+      if pre_start > pre_end: 
+        return None
+      if pre_start == pre_end:
+        return TreeNode(preorder[pre_start])
+      
+      node = TreeNode(preorder[pre_start])
+      i = inorder.index(preorder[pre_start])
+
+      # calculate new end in preorder array
+      newEnd = pre_start + 1 + ((i-1) - in_start)
+
+      node.left = DFS (pre_start+1, newEnd, in_start, i-1)
+      node.right = DFS (newEnd+1, pre_end, i+1, in_end)
+
+      return node
+    
+    return DFS (0, len(preorder)-1, 0, len(inorder)-1)
+
+  '''
+  SIMPLIFIED VERSION
+  Thought:
+    
+  Complexity:
+    Time: O(n)
+    Space: O()
+  '''
+  def buildTree2(self, preorder, inorder):
     # base case if the input array is empty
     if not preorder:
       return None
