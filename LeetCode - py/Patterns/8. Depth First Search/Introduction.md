@@ -94,7 +94,29 @@ def searchPath (root):
 ### 1.3 DFS构建/还原二叉树
 又是超级超级常见的类别, 题目要求常常是给定特殊的数组, 例如前/中/后序遍历的数组, 或者是排好序的数组或链表, 要求还原出原本的树或二叉搜索树. 这篇文章的详解十分到位可以做为参考: https://lucifer.ren/blog/2020/02/08/%E6%9E%84%E9%80%A0%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%93%E9%A2%98/
 
+题目当中, 105 106 889 是通过前中后序遍历来还原一颗二叉树, 而108 109是通过排序序列来还原一颗二叉搜索树. 可以从解题答案当中看到两个模板. 这里列出的模板是相对较为简洁明了的表达, 每次递归时, 向递归函数传入一份新的数组拷贝. 空间复杂度较大
+``` py
+def reconstructTree (arr1, arr2):
+  # Input arrays are some kind of traversal results
+  # define base condition that the input array is empty
+  if not arr:
+    return None
 
+  # find the current root from array(s) 
+  # 根据某种遍历的特性来确定当前状况下的根节点
+  node = TreeNode(arr1[i])
+  # find the index of arr1[i] in arr2
+  index = arr2.index(arr1[i])
+
+  # recursion step
+  # the key point is to determine the new sub-array passed to the recursion
+  # the index should base on the properties of arr1 and arr2
+  node.left = reconstructTree(arr1[a:b], arr2[c:d])
+  node.right = reconstructTree(arr1[e:f], arr2[g:h])
+
+  # return the top root node
+  return node
+```
 
 ## **经典题目:**
 
@@ -127,18 +149,23 @@ def searchPath (root):
 - 109. Convert sorted list to binary search tree (med)
 
 
-
-
 **DFS在树上的高频题:**
 
+(下次复习再做)
 98 101 114 199 235 236 
 
 **DFS 高频应用题:**
-130 131 200 207 
 
+(先做三道练练手 后序推进backtracking tag的时候再继续)
+- 130. Surrounded Regions (med)
+- 200. Number of Islands (med) 高频经典
+- 695. Max Area of Island (med)
+
+131 695 547 417 207 663
 
 ## **参考链接 Reference:**
 
 - https://www.jianshu.com/p/725de069938c (最好的BFS DFS详解)
 - https://juejin.cn/post/6844904196685185038
 - https://www.mscto.com/game/409337.html
+- https://zhuanlan.zhihu.com/p/62884431
