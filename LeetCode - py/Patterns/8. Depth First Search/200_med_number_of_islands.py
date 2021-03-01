@@ -34,10 +34,16 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    The MOST classic and popular problem! It has the soul for many 2D DFS application problems
+    In the main function:
+      - Loop over all elements in 2D matrix
+      - If the current element is '1', we start DFS
+        - In DFS, we traversal all connected '1's in four directions
+        - Every time we have been through a '1', we tag it '0'. Then next time, it will not be revisited
+      - After DFS, we have traverse an entire island (and also tag it to '0'), we increment result by 1
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(n) expense for recursion steps
   '''
   
   def numIslands(self, grid):

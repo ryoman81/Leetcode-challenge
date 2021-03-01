@@ -28,10 +28,12 @@ class Solution:
   '''
   OPTIMAL VERSION
   Thought:
-    
+    Please see the belowing simplified answer first
+    This is an optimization with the same idea of 105, 106, 889 
+    that use closure and avoid copying new array
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(H)
   '''
   def sortedArrayToBST(self, nums):
     def DFS (start, end):
@@ -52,10 +54,16 @@ class Solution:
   '''
   SIMPLIFIED VERSION
   Thought:
-    
+    The problem is very typical that construct BST from sorted array
+    Follow the principle that
+      - The middle point of current array is the root to be reconstructed
+      - left part of middle are left children
+      - right part of middle are right children
+      - recursion to create until no more items in array
+    A brilliant solution is to reconstruct via in-order traversal. Please see 109 
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(H) without considering copying array
   '''
   def sortedArrayToBST1(self, nums):
     if not nums: 

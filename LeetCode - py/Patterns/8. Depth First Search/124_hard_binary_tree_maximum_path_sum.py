@@ -27,10 +27,17 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    Different from 112, 113, 124. The path may not be root-to-leaf, neither top-to-bottom
+    A recursive concept should be understood. At a single node, 
+        A
+      /   \
+     B     C
+      - The paths could be A->B, A->C, or B->A->C
+      - A key point is to record a so-called 'max-gain' at each node
+      - We record this gain to the result if this gain is larger than others 
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(H)
   '''
   
   def maxPathSum(self, root):
@@ -52,6 +59,7 @@ class Solution:
       nonlocal result
       result = max(result, crr_gain)
 
+      # we return this recursion, we only append the larger gain to the current node
       return max(left_gain, right_gain) + node.val
 
     DFS(root)

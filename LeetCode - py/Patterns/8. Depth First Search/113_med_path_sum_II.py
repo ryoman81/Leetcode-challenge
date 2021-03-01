@@ -29,10 +29,13 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    Same thought as 112. Use a closure 'path' variable to record the current path
+    Two keys things to remind:
+      1. we need to append a copy of 'path' to the result
+      2. we need to pop() path after returning from current recursion
   Complexity:
-    Time: O(n)
-    Space: O()
+    Time: O(n) for visiting of each node
+    Space: O(H) H is the height of the tree. expense for recursion stack. average O(logn) 
   '''
   
   def hasPathSum(self, root, targetSum):
@@ -55,6 +58,8 @@ class Solution:
       
       DFS(node.left, sum-node.val)
       DFS(node.right, sum-node.val)
+      
+      # remove this node before returning current recursion
       path.pop()
 
     DFS(root, targetSum)

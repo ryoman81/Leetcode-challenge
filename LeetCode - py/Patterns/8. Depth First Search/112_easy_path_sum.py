@@ -29,12 +29,14 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    Follow template of path traversal
-      - maintain a closure varibale ifHasPath
-      - 
+    Follow in template of path search (root-leaf):
+      - closure variable: result that if has a path as required
+      - base case: no node exist
+      - condition: if leaf value equals to the current remaining
+      - recursion: carry out the target sum minus current value
   Complexity:
-    Time: O(n)
-    Space: O()
+    Time: O(n) for visiting of each node
+    Space: O(H) H is the height of the tree. expense for recursion stack. average O(logn) 
   '''
   def hasPathSum(self, root, targetSum):
     # define the closure variables

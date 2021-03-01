@@ -23,10 +23,11 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    Same thought as 113. Use a 'path' to record the current path
+    Write a helper function to create a required string '1->2->3'
   Complexity:
-    Time: O(n)
-    Space: O()
+    Time: O(n) for visiting of each node
+    Space: O(H) H is the height of the tree. expense for recursion stack. average O(logn) 
   '''
   
   def binaryTreePaths(self, root):

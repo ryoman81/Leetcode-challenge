@@ -20,7 +20,7 @@ class Solution:
   '''
   OPTIMAL VERSION
   Thought:
-    
+    refer to 105
   Complexity:
     Time: O(n)
     Space: O()
@@ -48,7 +48,7 @@ class Solution:
   '''
   SIMPLIFIED VERSION
   Thought:
-    
+    refer to 105
   Complexity:
     Time: O(n)
     Space: O()

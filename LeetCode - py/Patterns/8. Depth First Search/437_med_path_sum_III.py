@@ -30,16 +30,28 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    The question is very similar to the stock sell-buy problems of DP. 
+      The key is to maintain a data structure to record the "previous sum"
+      We make decision from this cumulated sum
+    The required path is not limited to root-to-leaf but still top-to-down, hence,
+      1. we use a closure variable to record the current cumulated sum at this point
+      2. we calculate the distance between this cumulatedSum and target
+      3. if there exist a value in the path link, which means:
+          there exists a result in this path link
+          take a look at animation online 
+
+    This solution is not optimal. The data structure we use is an array/list
+      Searching in a list is not efficient
+      A hash table is more desired
   Complexity:
-    Time: O(n)
-    Space: O()
+    Time: O(n)    # may not accurate
+    Space: O(H)   # may not accurate
   '''
   
   def pathSum(self, root, targetSum):
     result = 0
     # since it is the stack of path to record the cumulated sum
-    # we should push in 0 at the bottom (think why?)
+    # we should push in 0 at the bottom (think why?: because the initial sum is 0 -_-)
     path = [0]
 
     def DFS(node, cumulatedSum):

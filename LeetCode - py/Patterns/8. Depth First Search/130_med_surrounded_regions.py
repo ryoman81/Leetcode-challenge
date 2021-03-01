@@ -25,10 +25,14 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    1. We first iterate all border element
+      - if meet a 'O', we start DFS and tag all connected 'O' to a temporary 'Y' (tag step)
+    2. After checking all border elements and converted all border connected 'O' to 'Y'
+      - We iterate all element and convert all remaining 'O' to 'X' (flip step)
+      - We also restore all tagged 'Y' back to 'O'
   Complexity:
-    Time: O(n)
-    Space: O()
+    Time: O(nm)
+    Space: O(nm) stack space expense for recursion
   '''
   
   def solve(self, board) -> None:

@@ -17,10 +17,23 @@ class Solution:
   '''
   OPTIMAL VERSION
   Thought:
+    - The essential idea is that 
+        The in-order traversal of a BST will return an ascending sorted array
+    - Since here is not an array but a linked list, we cannot use method in 108 to access the middle point
     
+    * SIMPLE SOLUTION is convert linked list to an array
+
+    Here is one brilliant solution
+      1. first loop over list to get the total length of all nodes
+      2. we design a recursion function acccepting the start and end index
+        - The recursion follow the in-order traversal pattern
+        - Although we don't know what is the value at 'mid' we just do recursion
+        - The whole tree will be contructured from the LEFT BOTTOM
+        - And it follows the order LEFT -> ROOT -> RIGHT
+        - Every time a node is reconstructed, the head is advanced
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(H)
   '''
   def sortedListToBST(self, head: ListNode) -> TreeNode:
     # loop over linked list to obtain its length

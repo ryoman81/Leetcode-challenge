@@ -29,10 +29,11 @@ class Solution:
   '''
   OPTIMAL CODE VERSION
   Thought:
-    
+    This is an update from the next answer
+    It use closure and indexes to optimize the space complexity
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(H)
   '''
   def buildTree(self, preorder, inorder):
 
@@ -58,10 +59,15 @@ class Solution:
   '''
   SIMPLIFIED VERSION
   Thought:
-    
+    This is the template solution.
+    Two major steps:
+      1. find the current tree root from one specific array according to its property
+         find the division of left and right from another array also according to some special property
+      2. recursion to left and right of current node by passing a new copy of current arrays
+         Be sure to pass a copy instead of the reference of original array
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O() consider recursion stack and created copy of arrays
   '''
   def buildTree2(self, preorder, inorder):
     # base case if the input array is empty

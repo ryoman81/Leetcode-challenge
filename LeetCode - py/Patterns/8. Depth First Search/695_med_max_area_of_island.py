@@ -25,10 +25,12 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    Similar to problem 200. 
+    In this problem, we use an additional closure variable area to record the eara of current island
+    In the most answers, they pass area as argument of recursion function.
   Complexity:
     Time: O(n)
-    Space: O()
+    Space: O(n)
   '''
   
   def maxAreaOfIsland(self, grid):
@@ -59,6 +61,7 @@ class Solution:
         if grid[i][j] == 1:
           DFS(i, j)
           maxIsland = max(maxIsland, area)
+          # please remember to reset area for the next use
           area = 0
 
     return maxIsland
