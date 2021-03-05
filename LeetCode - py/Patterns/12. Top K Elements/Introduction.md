@@ -14,14 +14,14 @@ Heap 堆的概念很简单, 就是要满足两个条件
 
 堆的用处是让我们很容易知道一组数据当中的最大(最小)的一部分. 相比于线性结构, 堆的一些常见操作也能保持在树高的复杂度 O(H) 即 O(logn). 
 
-堆的实现, 在很多语言中heap是通过array实现的. Java和C++中使用PriorityQueue来实现heap的功能. Python中使用heapq模块实现最小堆. JS貌似没找到自带的heap数据结构. 但有关heap的题目当中, ~~大多数是自己手动实现heap的功能 (就像在sliding window当中我们自己用array构建了一个monoQueue单调队列一样)~~ **看起来不是这样, 根据已有的样本, 有关heap的题目大多数需要引入第三方库去创建heap的数据结构, 否则算法逻辑加上实现heap的操作会让代码量爆炸了...**
+堆的实现, 在很多语言中heap是通过array实现的. Java和C++中使用PriorityQueue来实现heap的功能. Python中使用heapq模块实现最小堆. JavaScript可以尝试 https://github.com/ignlg/heap-js. 但有关heap的题目当中, ~~大多数是自己手动实现heap的功能 (就像在sliding window当中我们自己用array构建了一个monoQueue单调队列一样)~~ **看起来不是这样, 根据已有的样本, 有关heap的题目大多数需要引入第三方库去创建heap的数据结构, 否则算法逻辑加上实现heap的操作会让代码量爆炸了...**
 
 尽管如此, 你还是需要熟练理解创建heap和相关的heap操作, 以免面试官更深入的考察. 因此, 你需要自己实现heap的三大方法: heapify, insert, 和 extract. 在做下列题之前, 请手动创建一个heap类! 可以先看下简介, 然后自己实现一下(最小/最大都要)
 
 Python: https://blog.csdn.net/qq_23869697/article/details/82735088
+
 JS: https://zhuanlan.zhihu.com/p/81255280 
 
-在做后面top k elements题目的时候, 你可以先使用自己创建的heap类来做, 如果自己的heap类无法实现, 请尝试第三方库. (有些题型仍然不能处理, 例如Python的heapq不能像java和C++的priority_queue一样处理iteratable的对象) JavaScript 可以尝试 https://github.com/ignlg/heap-js 
 
 ### **Top K Elements**
 
@@ -37,6 +37,12 @@ JS: https://zhuanlan.zhihu.com/p/81255280
 
 案例示意, 如求[3,1,5,12,2,11] 当中最大的三个元素, 我们构建一个最小堆, 每次将新进的元素跟堆顶比较来判断是否需要变更这个堆. 
 <img src="https://pic4.zhimg.com/80/v2-d42febfdf2d1ce2d2211e78ff8ea88db_720w.jpg?source=1940ef5c"/>
+
+在做top k elements题目的时候, 你可以先使用自己创建的heap类来做, 如果自己的heap类无法实现, 请尝试第三方库或内置模块. 目前做完四道题遇到的问题主要包括
+
+1. 有些题型Python内建的模块heapq仍然不能处理. 不像java和C++的priority_queue, 它只支持list作为处理的对象. 也没有提供comparator.
+2. 我不知道LeetCode 内如何引入JS的第三方library. Python可以引入内置的heapq模块, 但第三方的貌似也不能引入. 
+3. 最差的方法是将自己写的heap类贴入LeetCode的代码框...
 
 
 ## **经典题目:**
@@ -61,11 +67,11 @@ import heapq
 # heapq won't instantiate a new heap object, but works on list (static methods)
 # heapq only works on min heap. If want to create max heap, negatively reverse all numbers
 minheap = []
-# insert to heap  O(logn)
+# insert to heap  // O(logn)
 heapq.heappush(minheap, item)
-# extract top  O(logn)
+# extract top  //O(logn)
 top = heapq.heappop(minheap)
-# heapify a list array  O(n)
+# heapify a list array  //O(n)
 heapq.heapify(minheap)
 # insert an item to heap and extract its top
 # this method runs more efficient than use heappush() and heappop() individually
