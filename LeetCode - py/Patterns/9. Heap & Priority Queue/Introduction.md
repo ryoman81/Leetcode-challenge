@@ -4,6 +4,7 @@
 
 先看这个帖子, 介绍的不要太好. https://boycgit.github.io/ss-heap/ 
 
+做完了老大难topic 10 backtracing之后遇到原本的topic 13 K-way Merge. 结果发现, 还是heap专题的. 现在看来K-xxx相关的题型都可以用Heap这个数据结构来解决. 现在加上一个新的解题分类: **K-way Merge**.
 
 ## **解题思路:**
 ### **Heap 堆**
@@ -44,6 +45,16 @@ JS: https://zhuanlan.zhihu.com/p/81255280
 2. 我不知道LeetCode 内如何引入JS的第三方library. Python可以引入内置的heapq模块, 但第三方的貌似也不能引入. 
 3. 最差的方法是将自己写的heap类贴入LeetCode的代码框...
 
+### **K-way Merge**
+这是原先topic 13, 现在合并到当前专题下. K路归是解决那些涉及到多组排好序的数组的问题。 每当你的输入是K个排好序的数组，你就可以用堆来高效顺序遍历其中所有数组的所有元素。具体该类题型的步骤是:
+1. 维护一个最小堆 min heap
+2. 将每个有序数据的第一个元素加入堆中 O(logn)
+3. 取出堆顶(extract/pop)并放入结果集中 O(1)
+4. 将刚取出的元素所在的集合内取出下一个元素加入堆中 O(logn)
+5. 重复3-4步骤知道所有有序数列清空
+
+<img src='https://pic4.zhimg.com/80/v2-3e133c0710ef919e120fc74275d5255b_720w.jpg?source=1940ef5c' />
+
 
 ## **经典题目:**
 
@@ -51,6 +62,9 @@ JS: https://zhuanlan.zhihu.com/p/81255280
 - 347. Top K frequent elements (med)
 - 378. kth smallest element in a sorted matrix (med)
 - 295. Find median from data stream (hard)  经典题目 双堆
+
+**K-way Merge**
+
 
 218 253 703 
 

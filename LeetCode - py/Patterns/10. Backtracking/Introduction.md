@@ -30,15 +30,16 @@
 
 - 22. Generate parentheses (med)
 - 131. Panlindrome Partitioning (med)
-
 - 51. N-Queens (hard) 超级经典题目
-- 52. N-Queens II (hard)
-
 - 79. Word Search (med)
-- 44. Wildcard matching (hard)
 
-- 37. Sudoku Solver (hard) 超级经典, 回溯法天花板 吃不下来就下次啦
+下次再做题目
 
+37 Sudoku Solver (hard) 超级经典, 回溯法天花板, 巨难
+
+44 Wildcard matching (hard) 亚麻原题, 不止backtracking一种解法
+
+10, 60, 89, 93, 126, 140, 212, 401, Other combination sum 题目...
 
 ## **参考链接 Reference:**
 
