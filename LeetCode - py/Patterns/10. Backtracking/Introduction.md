@@ -31,13 +31,13 @@
 - 22. Generate parentheses (med)
 - 131. Panlindrome Partitioning (med)
 
-- 37. Sudoku Solver (hard) 超级经典题目
-
 - 51. N-Queens (hard) 超级经典题目
 - 52. N-Queens II (hard)
 
 - 79. Word Search (med)
 - 44. Wildcard matching (hard)
+
+- 37. Sudoku Solver (hard) 超级经典, 回溯法天花板 吃不下来就下次啦
 
 
 ## **参考链接 Reference:**

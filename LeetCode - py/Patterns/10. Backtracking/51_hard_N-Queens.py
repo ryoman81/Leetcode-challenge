@@ -30,10 +30,8 @@ class Solution:
     result = []
     # initialize a 2D matrix in python; [['.','.','.'], ['.','.','.'], ['.','.','.']] if n = 3
     board = [['.']*n for i in range(n)]
-    row = 0
 
-    def backtracking ():
-      nonlocal row
+    def backtracking (row):
       if row == n:
         result.append(self.convert(board))
 
@@ -42,16 +40,14 @@ class Solution:
         if not self.check(board, row, col):
           continue
 
-        # if valid backtracking
+        # if valid backtracking recursion
         board[row][col] = 'Q'
-        row += 1
-        backtracking ()
+        backtracking (row+1)
 
-        # backtracking reset the queen and row back
-        row -= 1
+        # backtracking reset the queen
         board[row][col] = '.'
         
-    backtracking()
+    backtracking(row=0)
     return result
 
   # helper that check if placing a queen on current [row, col] is valid
