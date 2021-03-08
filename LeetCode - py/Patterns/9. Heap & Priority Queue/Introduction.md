@@ -4,7 +4,7 @@
 
 先看这个帖子, 介绍的不要太好. https://boycgit.github.io/ss-heap/ 
 
-做完了老大难topic 10 backtracing之后遇到原本的topic 13 K-way Merge. 结果发现, 还是heap专题的. 现在看来K-xxx相关的题型都可以用Heap这个数据结构来解决. 现在加上一个新的解题分类: **K-way Merge**.
+做完了老大难topic 10 backtracing之后遇到原本的topic 13 K-way Merge. 结果发现, 还是heap专题的. 现在看来K-xxx相关的题型都可以用Heap这个数据结构来解决. 现在加上一个新的解题分类: K-way Merge. **做完之后我他妈只找到一道题, 就是之前Linked List做的 K个sorted lists合并问题. 遂, 加上原本跳过的Topic 9, Topic也10跳过**
 
 ## **解题思路:**
 ### **Heap 堆**
@@ -55,6 +55,8 @@ JS: https://zhuanlan.zhihu.com/p/81255280
 
 <img src='https://pic4.zhimg.com/80/v2-3e133c0710ef919e120fc74275d5255b_720w.jpg?source=1940ef5c' />
 
+**做完之后发现, LeetCode上也就他妈一道题,,, 妈拉个巴子.... 因此将 Problem 23 加入这个章节. Heap进而结束!**
+
 
 ## **经典题目:**
 
@@ -62,9 +64,7 @@ JS: https://zhuanlan.zhihu.com/p/81255280
 - 347. Top K frequent elements (med)
 - 378. kth smallest element in a sorted matrix (med)
 - 295. Find median from data stream (hard)  经典题目 双堆
-
-**K-way Merge**
-
+- 23. Merge K Sorted List (hard) 唯一一道K路归并题目我找到的...
 
 218 253 703 
 
