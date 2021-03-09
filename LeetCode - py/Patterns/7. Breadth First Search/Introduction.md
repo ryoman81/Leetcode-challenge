@@ -77,7 +77,7 @@ const BFSTreeSearch = (root) => {
 
   // While-loop over queue until no more node
   // In this template, we loop over entire layer at a single while loop
-  while (queue) {
+  while (queue.length) {
     const levelSize = queue.length;
     // loop over all notes in the current layer
     for (let i = 0; i < levelSize; i++) {
@@ -93,5 +93,28 @@ const BFSTreeSearch = (root) => {
 
   // Return something: we can follow this template and use some variables to record the height or node value layer by layer
   return result;
+}
+```
+
+Or we don't need to specify the single layer if we don't care about the tree height or width
+```js
+const BFSTreeSearch = (root) => {
+  // Error check for empty tree
+  if (!root)
+    return null;
+
+  // Initialize queue to record nodes by layers
+  const queue = [root];
+
+  // While-loop over queue until no more node
+  while (queue.length) {
+    // take out one node from the queue
+    const node = queue.shift();
+    // put in all children of this node to the queue
+    if (node.left)
+      queue.push(node.left);
+    if (node.right)
+      queue.push(node.right);
+  }
 }
 ```
