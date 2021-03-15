@@ -20,26 +20,32 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Template:
+      - State variable: start - carried out variable, maintain the search starting index for each recursion.
+      - State: path[] - record current valid result along recursion
+      - Choices: all numbers from start point to the end of input array
+      - Pruning:
+        No pruning since we update solution space each time entering a new recursion
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(C(n,k))   - think about the defination of C^k_n= n!/( (n-k)!*k! )
+    Space: O(n) 
   '''
   def combine(self, n: int, k: int):
-    result = []
-    path = []
+    result = []   # result list 
+    path = []     # state
 
     def backtracking (start):
+      # base case if the current path meet the length k of the requirement
       if len(path) == k:
         result.append(path[:])
         return
-      
+      # search solution space from starting point to the end of total possible number
       for i in range(start, n+1):
-        # make choice
+        # set state for next recursion
         path.append(i)
         # do recursion
         backtracking (i+1)
-        # backtracking
+        # restore state after recursion
         path.pop()
         
     backtracking(1)

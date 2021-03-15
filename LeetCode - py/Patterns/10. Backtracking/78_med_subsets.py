@@ -21,21 +21,24 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Template:
+      - Almost the same as question to 77. combination
+      - We need to update result ANYTIME when we enter this recursion
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n * 2^n)    - comparing to 46 and 77, this time complexity is more of a mathematical question. I copied it from official solution. 
+    Space: O(n)
   '''
   def subsets(self, nums):
     result = []
     path = []
 
     def backtracking (start):
+      # the subset requires anytime when recursion, it is one of the result
       result.append(path[:])
-
+      # base case
       if start == len(nums):
         return
-
+      # search solution space
       for i in range(start, len(nums)):
         path.append(nums[i])
         backtracking(i+1)

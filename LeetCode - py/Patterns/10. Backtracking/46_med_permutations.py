@@ -24,31 +24,39 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    This is a STAR question, high frequent and I met in AMAZON!!!!!!
+    But once you learned backtracking, you will see it how simple and brief
+    Template:
+      - State variable: used[] - record if current node has been used
+      - State: path[] - record current valid result along recursion
+      - Choices: all numbers in the input list
+      - Pruning:
+        1. if the current node has been used
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n!)   - of course as named permutation, n! is what it means
+    Space: O(n)   - closure variables and the maximum recursion depth
   '''
   def permute(self, nums):
-    result = []
-    path = []
-    used = [False] * len(nums)
+    result = []                   # result list
+    path = []                     # state
+    used = [False] * len(nums)    # state variable [false, false, ...]
 
     def backtracking ():
+      # base case if the path length meet the requirement
       if len(path) == len(nums):
         result.append(path[:])
         return
-      
+      # search solution space
       for i in range(len(nums)):
-        # prune
+        # prune used cases
         if used[i]:
           continue
-        # make choice
+        # set state for next recursion
         path.append(nums[i])
         used[i] = True
         # do recursion
         backtracking ()
-        # backtracking
+        # restore state after recursion
         path.pop()
         used[i] = False
         
