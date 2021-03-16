@@ -38,10 +38,10 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Almost the same as 207. Now we use path in replace of count.
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n+m)    n is the number of all course; m is the prerequisites numbers
+    Space: O(n+m)
   '''
   def findOrder(self, numCourses, prerequisites):
     # Initialize graph representation and indegree table

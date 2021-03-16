@@ -31,10 +31,10 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Refer to introduction
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n+m)    n is the number of all course; m is the prerequisites numbers
+    Space: O(n+m)
   '''
   def canFinish(self, numCourses, prerequisites):
     ## Step 1: initialize the indegree map and graph adjacent list
