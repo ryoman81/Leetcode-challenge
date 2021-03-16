@@ -28,14 +28,15 @@ Pruning是很多backtracking题目(还有面试)当中考察的重点, 如果没
 ```py
 result = []       # 总的结果集
 path = []         # 路径的记录
-choiceList = []   # 总的搜索列表
+state variables   # 一些状态变量来判断是否剪枝
+# 这些状态变量同样也可以通过参数传给回溯函数, 实际题目中有些混用.
 
 def backtracking ():
   if 结束条件:
     更新/记录结果
 
   for 选择 in 搜索列表:
-    if 选择 not 题目条件:       # ----> 剪枝
+    if 选择 not 题目条件:       # ----> 剪枝 [这个判断过程也可放在for外面]
       continue
     设置状态                    # ----> 设置状态
     backtracking()             # ----> 进入递归
@@ -49,6 +50,8 @@ return result
 
 所有题目都太经典了, 看到题目名字都能感觉到之前出现在Amazon面经当中. 全部是经典题目. 把下列列出的做干净之后, 务必需要把leetcode上backtracking tag刷干净.
 
+(根据题解, 貌似这几个题的时间上限都是 n * 2^n. 有点数学意味, 说是一个宽松上限, 没深入了解)
+
 - 46. Permutation (med)
 - 47. Permutation II (med)
 - 78. Subsets (med)
@@ -61,8 +64,8 @@ return result
 
 - 22. Generate parentheses (med)
 - 131. Panlindrome Partitioning (med)
-- 51. N-Queens (hard) 超级经典题目
 - 79. Word Search (med)
+- 51. N-Queens (hard) 超级经典题目
 
 下次再做题目
 
@@ -89,10 +92,13 @@ def problem (nums):
   result = []
   path = []
   # other helping variables for recording and pruning, such as count, ifUsed...
+  state = xxx
 
   # Define a backtracking recursive function
   def backtracking (someStateToCarry):
     # the base case that meet the requirement of this problem
+    # 回溯法的特点是, 通过剪枝, 维护的path始终是一个valid路径
+    # 因此判断path是否满足条件, 不应该出现在base case当中, 而应该在剪枝过程中
     if len(path) == len(nums):
       result.append(path[:])
       return
@@ -105,10 +111,10 @@ def problem (nums):
       # we should avoid recursing if some scenarios meet
       # 剪枝通常发生在这里, 这个解的空间可能在某些时候已经没有搜索下去的必要了
       # 例如走迷宫的时候遇到了墙, 或者下一次搜索的点已经遍历过了
-      if condition: continue
+      if state condition: continue
 
       # [KEY STEP] Set current state
-      # 包括存储路径, 记录某个点, 计数器加1, 或设置当前点为已访问
+      # 包括存储路径, 记录某个点, 计数器加1, 或标记当前点为已访问
       path.append(choices[i])
       # do recursion from current node
       # we may update some state to carry out such as, starting index...
@@ -117,7 +123,8 @@ def problem (nums):
       path.pop()
 
   # Start backtracking recursion.
-  # If there is some state to carry out for the next recursion we can set it here
+  # If there is some state to carry out for the next recursion we can set it here.
+  # 实际上backtracking函数的的参数全部可以放在闭包里面, 看不同题目的使用习惯, 这两者是等价的
   backtracking(initialStateToCarry)
   # Return problem function
   return result

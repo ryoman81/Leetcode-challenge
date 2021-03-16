@@ -31,10 +31,19 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    
+    Template:
+      - State variable:
+        - row index
+        - column index
+      - State: path[] - record current valid result along recursion
+      - Choices: for directions as right, up, left, down 和走迷宫问题一样
+      - Pruning: 
+        1. if the next location is out of the board
+        2. if the next location has been visited (as tagged of '#')
+        3. if the next character is not the char in word[len(path)]
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(M * N * 3^L)    - 依旧不明...
+    Space: O(MN)
   '''
   def exist(self, board, word):
     path = []
@@ -43,11 +52,14 @@ class Solution:
     n = len(board[0])
 
     def backtracking(row, col):
+      ## base case: if we do find a valid path that has same length of word, it must be the answer
       if len(path) == len(word):
         nonlocal result
         result = True
         return
 
+      ## This time, we do pruning outside the for-loop
+      # 本质上, 在for-loop内剪枝, 和进入到下次recursion函数内时剪枝没有区别. 
       # prune for boundary conditions
       if not 0<=row<m or not 0<=col<n or board[row][col] == '#':
         return
@@ -55,26 +67,34 @@ class Solution:
       if board[row][col] != word[len(path)]:
         return
 
+      # search in solution space of four directions
       for i,j in [[0,1], [1,0], [0,-1], [-1,0]]:
         letter = board[row][col]
+        # set state
         path.append(letter)
         board[row][col] = '#'
+        # do backtracking with the next location
         backtracking(row+i, col+j)
+        # reset state
         path.pop()
         board[row][col] = letter
 
+    ## we start the backtracking process at each location
     for i in range(m):
       for j in range(n):
         backtracking(i, j)
+        # if we found answer starting from this location, we can return True and stop searching
         if result: return True
-
+    # if nothing found at all return False
     return False
 
 
   '''
   MY CODE VERSION
   Thought:
-    Excess time limit. we must prune within backtracking function
+    Excess time limit. We exhausted all pathes including invalid solutions
+    Similar as 22, this answer is still a brute force. 
+    这个解答当中, 还是没有充分运用backtracking的关键点, 剪枝并确保path当中记录的是当前正确的集合
   Complexity:
     Time: O()
     Space: O()

@@ -21,8 +21,13 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-     
-     The efficiency can be improved using DP
+     The method uses backtracking and follows the template
+     However, this answer can be improved by using DP to store the panlindrome met before
+     Template:
+      - State variable: start - the starting index of solution space
+      - State: path[] - record current valid result along recursion
+      - Choices: from start to the end of string
+      - Pruning: if the current substring is not a panlindrome, no need to recursion further
   Complexity:
     Time: O()
     Space: O()
@@ -32,16 +37,20 @@ class Solution:
     path = []
 
     def backtracking(start):
+      # base case
       if start == len(s):
         result.append(path[:])
-
+      # search solution space from start to the end of string
       for i in range(start, len(s)):
         substr = s[start:i+1]
         # prune if the current substr is not validate
         if not self.validate(substr):
           continue
+        # set state
         path.append(substr)
+        # do backtracking
         backtracking(i+1)
+        # reset state
         path.pop()
         
     backtracking(0)

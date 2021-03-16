@@ -25,7 +25,7 @@ class Solution:
       - State: path[] - record current valid result along recursion
       - Choices: all numbers from start point to the end of input array
       - Pruning:
-        No pruning since we update solution space each time entering a new recursion
+        1. We update solution space each time entering a new recursion
   Complexity:
     Time: O(C(n,k))   - think about the defination of C^k_n= n!/( (n-k)!*k! )
     Space: O(n) 

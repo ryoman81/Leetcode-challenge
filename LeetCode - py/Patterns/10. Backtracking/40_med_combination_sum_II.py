@@ -33,10 +33,20 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Similar as 47, the number set could be duplicated, a sorting ahead is needed
+    Template:
+      - State variable: 
+        - crrSum - record the current summation of all nodes in path
+        - start - carry out varible to limit the solution space only from the current index
+      - State: path[] - record current valid result along recursion
+      - Choices: all numbers from start point to the end of input array
+      - Pruning:
+        1. we have update solution space every time in recursion [start, end]
+        2. if current summation is greater than the target we end this path and stop keeping recursion
+        3. if current node is the same as the last node we skip this one since it might cause path duplication
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n * 2^n)    - 同样不太明, 但是和此类题一样, 是一个宽松的上限
+    Space: O(n)
   '''
   def combinationSum2(self, candidates, target):
     candidates.sort()
@@ -46,19 +56,23 @@ class Solution:
 
     def backtracking (start):
       nonlocal crrSum
+      # base case
       if crrSum == target:
         result.append(path[:])
-
+      # search solution space from start to the end of array
       for i in range(start, len(candidates)):
-        # pruning
+        # pruning 1: if summation is greater than target
         if crrSum + candidates[i] > target:
           continue
+        # pruning 2: if the current node is the same as the last one
         if i > start and candidates[i] == candidates[i-1]:
           continue
-
+        # set state
         path.append(candidates[i])
         crrSum += candidates[i]
+        # do backtracking and carry out a new starting point for the search space
         backtracking(i+1)
+        # reset state
         path.pop()
         crrSum -= candidates[i]
 

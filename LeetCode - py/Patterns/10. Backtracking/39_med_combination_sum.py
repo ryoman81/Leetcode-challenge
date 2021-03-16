@@ -43,10 +43,18 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Template:
+      - State variable: 
+        - crrSum - record the current summation of all nodes in path
+        - start - carry out varible to limit the solution space only from the current index
+      - State: path[] - record current valid result along recursion
+      - Choices: all numbers from start point to the end of input array
+      - Pruning:
+        1. we have update solution space every time in recursion [start, end]
+        2. if current summation is greater than the target we end this path and stop keeping recursion
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n * 2^n)   - 不知道, 没仔细想
+    Space: O(target)   - the maximum number of recursion when target = 1+1+...+1
   '''
   def combinationSum(self, candidates, target):
     result = []
@@ -55,17 +63,20 @@ class Solution:
 
     def backtracking (start):
       nonlocal crrSum
+      # base case when find the target
       if crrSum == target:
         result.append(path[:])
-
+      # search solution space
       for i in range(start, len(candidates)):
-        # pruning
+        # pruning if summation is greater than target
         if crrSum + candidates[i] > target:
           continue
-
+        # set state
         path.append(candidates[i])
         crrSum += candidates[i]
-        backtracking(i)
+        # comparing to 77 and 40, we do backtracking from current node since the number can be reused
+        backtracking(i) 
+        # restore state
         path.pop()
         crrSum -= candidates[i]
 

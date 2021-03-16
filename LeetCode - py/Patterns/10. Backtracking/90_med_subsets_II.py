@@ -20,10 +20,17 @@ class Solution:
   '''
   MY CODE VERSION
   Thought:
-    1. 
+    Template:
+      - State variable: 
+        - start - carry out varible to limit the solution space only from the current index
+      - State: path[] - record current valid result along recursion
+      - Choices: all numbers from start point to the end of input array
+      - Pruning:
+        1. we have update solution space every time in recursion [start, end]
+        2. similar as 47 and 40, if the next item in sorted array is a duplication, skip it
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n * 2^n)
+    Space: O(n)
   '''
   def subsets(self, nums):
     nums.sort()
@@ -31,16 +38,21 @@ class Solution:
     path = []
 
     def backtracking (start):
+      # update result before checking base case as prob. 78
       result.append(path[:])
-
+      # base case
       if start == len(nums):
         return
-
+      # search solution space from start to end
       for i in range(start, len(nums)):
+        # pruning if the current node is the same as the last one
         if i > start and nums[i] == nums[i-1]:
           continue
+        # set state
         path.append(nums[i])
+        # do backtracking
         backtracking(i+1)
+        # reset state
         path.pop()
         
     backtracking(0)
