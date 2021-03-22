@@ -31,8 +31,7 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
 ## **经典题目:**
 
-### 1. Distinct Paths 达到目标的路径/方式的总数
-最经典的题型莫过于此, 走楼梯, 走二维图等等
+**1. Distinct Paths 达到目标的路径/方式的总数**
 
 - 70. Climbing stairs (easy)
 - 62. Unique Paths (med)
@@ -40,6 +39,13 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 - 91. Decode Ways (med)
 - 1155. Number of dice rolls with target sum (med)
 
+**2. Minimum/Maximum cost to reach target 达到目标的最大/最小代价**
+
+- 746. Min cost climbing stairs (easy)
+- 64. Minimum path sum (med)
+- 322. Coin change (med)
+- 120. Triange (med)
+- 983. Minumum cost for tickets (med)
 
 ## **参考链接 Reference:**
 
