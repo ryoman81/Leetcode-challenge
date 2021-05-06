@@ -47,6 +47,11 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 - 120. Triange (med)
 - 983. Minumum cost for tickets (med)
 
+```
+Note:
+1155, 983和322很类似, 按细分单位来切割. 考虑状态转移时候, 983需要考虑更多的边界条件.
+```
+
 ## **参考链接 Reference:**
 
 - https://www.zhihu.com/question/291280715 基本上全网大v(包括leetcode官号)的答案都在这个知乎帖子里面了, 各大v推广目的明显啊.
