@@ -52,6 +52,20 @@ Note:
 1155, 983和322很类似, 按细分单位来切割. 考虑状态转移时候, 983需要考虑更多的边界条件.
 ```
 
+**3. Decision making and Stock Problem 决策制定及股票问题**
+
+除198外, 此类型下的题目均出自LC当中一个热门系列的问题, 股票买卖问题. 详细解读参考该分类下文档.
+
+- 198. House Robber (med)
+- 121. Best time to buy and sell stock (easy)
+- 122. Best time to buy and sell stock (med)
+- 123. Best time to buy and sell stock III (hard)
+- 188. Best time to buy and sell stock IV (hard)
+- 309. Best time to buy and sell stock with cooldown (med)
+- 714. Best time to buy and sell stock with transaction fee (med)
+
+
+
 ## **参考链接 Reference:**
 
 - https://www.zhihu.com/question/291280715 基本上全网大v(包括leetcode官号)的答案都在这个知乎帖子里面了, 各大v推广目的明显啊.
