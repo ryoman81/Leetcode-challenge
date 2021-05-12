@@ -1,46 +1,49 @@
 '''
 You are given an array prices where prices[i] is the price of a given stock on the ith day.
-You want to maximize your profit by choosing a single day to buy one stock 
-and choosing a different day in the future to sell that stock.
-Return the maximum profit you can achieve from this transaction. 
-If you cannot achieve any profit, return 0.
+Find the maximum profit you can achieve. You may complete as many transactions as you like 
+(i.e., buy one and sell one share of the stock multiple times).
+Note: You may not engage in multiple transactions simultaneously 
+(i.e., you must sell the stock before you buy again).
 
 Example 1:
+
 Input: prices = [7,1,5,3,6,4]
-Output: 5
-Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
-Note that buying on day 2 and selling on day 1 is not allowed because you must buy before you sell.
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
 
 Example 2:
+Input: prices = [1,2,3,4,5]
+Output: 4
+Explanation: Buy on day 1 (price = 1) and sell on day 5 (price = 5), profit = 5-1 = 4.
+Note that you cannot buy on day 1, buy on day 2 and sell them later, as you are engaging multiple transactions at the same time. You must sell before buying again.
+
+Example 3:
 Input: prices = [7,6,4,3,1]
 Output: 0
-Explanation: In this case, no transactions are done and the max profit = 0.
+Explanation: In this case, no transaction is done, i.e., max profit = 0.
  
 Constraints:
-1 <= prices.length <= 105
+1 <= prices.length <= 3 * 104
 0 <= prices[i] <= 104
 '''
 
 
 class Solution:
   '''
-  FINAL VERSION
+  SPACE OPTIMIZED VERSION
     This solution is exactly the solution from LeetCode
-    好多人留言说这不是DP题目. 事实上, 这个解就是最初template解法一步步优化而成的
+    Modified from the space optimized version
     - DP0 --> maxProfit   :: 最大化收益
-    - DP1 --> minPrice    :: 这里做了变换, minPrice已经不是DP1, 即前一天手头握有股票的价格了
+    - DP1 --> null        :: 这里同样做了变换, 隐形表示了DP1和DP0的关系
   Complexity:
     Time: O(n)
     Space: O(1)
   '''
   def maxProfit(self, prices):
     maxProfit = 0
-    minPrice = prices[0]
-  
     for i in range(1, len(prices)):
-      minPrice = min(minPrice, prices[i])
-      maxProfit = max(maxProfit, prices[i]-minPrice)
-
+      maxProfit = max(0, prices[i]-prices[i-1]) + maxProfit
     return maxProfit
 
   '''
@@ -57,14 +60,16 @@ class Solution:
     DP1 = -prices[0]
 
     for i in range(1, n):
+      temp = DP0
       DP0 = max(DP0, DP1+prices[i])
-      DP1 = max(DP1, -prices[i])
+      DP1 = max(DP1, temp-prices[i])
     
     return DP0
 
   '''
   OPTIMIZED VERSION
-    Since k=0, there is no need to maintain the dimension of k
+    Similar like 121, there is no need to maintain the dimension of k
+    since [k] and [k-1] should have no influence on final DP
     Lets think about the state transition and initialization
       - Transition: 
         DP0 relies on the previous DP0 or DP1 no matter what k is
@@ -97,7 +102,7 @@ class Solution:
     This version follows the generalized template strictly
     Let's think about three variables
       - days: [0, n-1]
-      - trading times: k = 1
+      - trading times: [0, n]
       - actions: sell or buy
   Complexity:
     Time: O(n)
@@ -105,23 +110,23 @@ class Solution:
   '''
   def maxProfit2(self, prices):
     n = len(prices)
-    # this time we can only trade 1 time, k = 1
-    DP0 = [[0] * 2 for _ in range(n)]
-    DP1 = [[0] * 2 for _ in range(n)]
+    # the maximum length of k equals to n+1
+    DP0 = [[0] * (n+1) for _ in range(n)]
+    DP1 = [[0] * (n+1) for _ in range(n)]
 
     # initialize DP0 DP1 at k=0 and i=0
     for i in range(n):
       DP1[i][0] = float('-INF')
-    for ki in range(2):
+    for ki in range(n+1):
       DP1[0][ki] = -prices[0]
 
     # Loop
     for i in range(1, n):
-      # we no longer need to loop over k because k=1
-      DP0[i][1] = max(DP0[i-1][1], DP1[i-1][1]+prices[i])
-      DP1[i][1] = max(DP1[i-1][1], DP0[i-1][0]-prices[i])
+      for k in range(1, n+1):
+        DP0[i][k] = max(DP0[i-1][k], DP1[i-1][k]+prices[i])
+        DP1[i][k] = max(DP1[i-1][k], DP0[i-1][k-1]-prices[i])
     
-    return DP0[n-1][1]
+    return DP0[n-1][n]
 
 
 ## Run code after defining input and solver
