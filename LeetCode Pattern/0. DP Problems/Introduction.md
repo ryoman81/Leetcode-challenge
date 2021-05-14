@@ -43,8 +43,8 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
 - 746. Min cost climbing stairs (easy)
 - 64. Minimum path sum (med)
-- 322. Coin change (med)
 - 120. Triange (med)
+- 198. House Robber (med)
 - 983. Minumum cost for tickets (med)
 
 ```
@@ -54,9 +54,8 @@ Note:
 
 **3. Decision making and Stock Problem 决策制定及股票问题**
 
-除198外, 此类型下的题目均出自LC当中一个热门系列的问题, 股票买卖问题. 详细解读参考该分类下文档.
+详细解读参考该分类下文档.
 
-- 198. House Robber (med)
 - 121. Best time to buy and sell stock (easy)
 - 122. Best time to buy and sell stock (med)
 - 123. Best time to buy and sell stock III (hard)
@@ -64,6 +63,20 @@ Note:
 - 309. Best time to buy and sell stock with cooldown (med)
 - 714. Best time to buy and sell stock with transaction fee (med)
 
+**4. Knapsack Problems 背包问题**
+
+详细解读参考分类文档.
+
+- 416. Partition equal subset sum (med)
+- 494. Target Sum
+- 474. Ones and zeros
+- 956. Tallest billboard
+- 1049. Last stone weight II
+
+- 322. Coin change (med)
+- 518. Coin change II 
+
+**5. Substring Problems 字符串, 子集, 及回文类DP问题**
 
 
 ## **参考链接 Reference:**
@@ -72,8 +85,3 @@ Note:
 - https://zhuanlan.zhihu.com/p/91582909 详细的方法论, 个人觉得讲解最好的
 - https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns LeetCode圣诞大奖得主的分类法, 我的分类就是按照这个的
 - https://leetcode-cn.com/circle/article/2Xxlw3/ 另一个更为细致的分类标准
-
-## **模板 Template**
-```py
-
-```
