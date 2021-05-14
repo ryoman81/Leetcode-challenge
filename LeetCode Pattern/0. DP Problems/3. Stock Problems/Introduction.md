@@ -88,6 +88,23 @@ for i in range(1, n)
     DP1[i][ki] = max(DP1[i-1][ki], DP0[i-1][ki-1]-prices[i])
 ```
 
+## **Simplification 简化**
+状态变量中, 除泛化版题188外, 交易次数k要不是常数1, 2或者不限次数. 因此状态转移方程中可以去除维度k, 进而简化空间复杂度, 以及更为方便formulate最终的精简版本. 此处根据题122, 309和714, 既不限次数k的情况给出对应简化后的模板.
+```py
+def maxProfit (prices):
+  n = len(prices)
+  DP0 = [0] * n
+  DP1 = [0] * n
+  # 初始化
+  DP1[0] = -prices[0]
+  # 循环体只需考虑i, 对k=1, 2, n特例可以单独考虑
+  for i in range(1, n):
+    DP0[i] = max(DP0[i-1], DP1[i-1]+prices[i])
+    DP1[i] = max(DP1[i-1], DP0[i-1]-prices[i])
+  return DP[n-1]
+```
+根据该简化后的模板, 再可进行空间状态的优化, 将DP0, DP1转变为单变量
+
 ## References
 - !最好贴 https://medium.com/@USTCLink/%E7%A7%92%E6%9D%80%E9%9D%A2%E8%AF%95%E4%B8%AD%E7%9A%84%E8%82%A1%E7%A5%A8%E9%97%AE%E9%A2%98-%E7%9C%8B%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86-fa730ae4681d
 - https://zhuanlan.zhihu.com/p/92908822
