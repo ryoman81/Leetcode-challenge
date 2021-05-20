@@ -68,11 +68,11 @@ Note:
 详细解读参考分类文档.
 
 - 416. Partition equal subset sum (med)
-- 494. Target Sum
+- 494. Target Sum (med)
 - 474. Ones and zeros
 - 956. Tallest billboard
 - 1049. Last stone weight II
-
+- 279. Perfect squares (med)
 - 322. Coin change (med)
 - 518. Coin change II 
 
@@ -84,4 +84,4 @@ Note:
 - https://www.zhihu.com/question/291280715 基本上全网大v(包括leetcode官号)的答案都在这个知乎帖子里面了, 各大v推广目的明显啊.
 - https://zhuanlan.zhihu.com/p/91582909 详细的方法论, 个人觉得讲解最好的
 - https://leetcode.com/discuss/general-discussion/458695/dynamic-programming-patterns LeetCode圣诞大奖得主的分类法, 我的分类就是按照这个的
-- https://leetcode-cn.com/circle/article/2Xxlw3/ 另一个更为细致的分类标准
+- https://leetcode-cn.com/circle/article/2Xxlw3/ 最全面的老中细致的分类标准

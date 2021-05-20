@@ -45,6 +45,29 @@ class Solution:
     Time: O(amount * nCoins)
     Space: O(amount) - space optimization available
   '''
+  def coinChange1(self, coins, amount):
+    n = len(coins)
+    
+    DP = [float('inf')] * (amount+1)
+    DP[0] = 0
+
+    for i in range(1, n+1):
+      for j in range(coins[i-1], amount+1):
+        DP[j] = min(DP[j], DP[j-coins[i-1]]+1)
+
+    return DP[amount] if DP[amount]!=float('inf') else -1
+
+  '''
+  MY CODE VERSION
+  Thought:
+    Dynamic Programming template:
+      State: DP[n] - the minimum number of coins when the sum amount is n
+      Transition: DP[i] = min(DP[i-coins[j]]) + 1
+      Initial states: DP[0] = 0 - when amount is 0, no coins needed 
+  Complexity:
+    Time: O(amount * nCoins)
+    Space: O(amount) - space optimization available
+  '''
   def coinChange(self, coins, amount):
     # Create DP state with 1 x (amount+1)
     DP = [float('inf')] * (amount+1)
@@ -72,7 +95,7 @@ class Solution:
 
 
 ## Run code after defining input and solver
-input1 = [2]
-input2 = 3
-solver = Solution().coinChange
+input1 = [1,2,5]
+input2 = 11
+solver = Solution().coinChange1
 print(solver(input1, input2))
