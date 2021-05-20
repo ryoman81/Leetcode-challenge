@@ -7,5 +7,5 @@
 
 
 ## References
-- https://zhuanlan.zhihu.com/p/93857890
-- https://www.jianshu.com/p/b4b45874643f
+- https://leetcode-cn.com/problems/coin-change/solution/yi-pian-wen-zhang-chi-tou-bei-bao-wen-ti-sq9n/
+- https://zhuanlan.zhihu.com/p/93857890 

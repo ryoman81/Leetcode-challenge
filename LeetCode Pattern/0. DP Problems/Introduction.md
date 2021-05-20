@@ -37,7 +37,6 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 - 62. Unique Paths (med)
 - 63. Unique Paths II (med)
 - 91. Decode Ways (med)
-- 1155. Number of dice rolls with target sum (med)
 
 **2. Minimum/Maximum cost to reach target 达到目标的最大/最小代价**
 
@@ -46,11 +45,6 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 - 120. Triange (med)
 - 198. House Robber (med)
 - 983. Minumum cost for tickets (med)
-
-```
-Note:
-1155, 983和322很类似, 按细分单位来切割. 考虑状态转移时候, 983需要考虑更多的边界条件.
-```
 
 **3. Decision making and Stock Problem 决策制定及股票问题**
 
@@ -70,7 +64,8 @@ Note:
 - 416. Partition equal subset sum (med)
 - 494. Target Sum (med)
 - 474. Ones and zeros
-- 956. Tallest billboard
+- 377. Combination sum IV
+- 1155. Number of dice rolls with target sum (med)
 - 1049. Last stone weight II
 - 279. Perfect squares (med)
 - 322. Coin change (med)
