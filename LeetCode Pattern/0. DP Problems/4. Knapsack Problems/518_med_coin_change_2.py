@@ -35,21 +35,36 @@ All the values of coins are unique.
 class Solution:
   '''
   MY CODE VERSION
-  Thought:
-    
+  Problem Desc:
+    Type: Unbounded Knapsack 无限背包问题
+    Prob: number of combination 组合问题
+  Template:
+    DP[j]: the number of combinations given target sum of j
+    Transition: DP[j] = DP[j] + DP[j-item]
+    Initial: DP=0, DP[0]=1
+    Loop: 外层coins, 内层amount正序
   Complexity:
-    
+    Time: O(amount * n)
+    Space: O(amount)
   '''
   def change(self, amount, coins):
-    n = len(coins)
-    
-    DP = [0] * (amount+1)
+    # define the target capacity
+    capacity = amount
+
+    # initiate DP
+    DP = [0] * (capacity+1)
+    # when the target combination sum is 0, there is 1 way by choosing nothing
     DP[0] = 1
 
-    for i in range(1, n+1):
-      for j in range(coins[i-1], amount+1):
-        DP[j] = DP[j] + DP[j-coins[i-1]]
-    return DP[amount]
+    # loop to create DP
+    for item in coins:
+      for j in range(1, capacity+1):
+        # boundary condition
+        if j >= item:
+          DP[j] = DP[j] + DP[j-item]
+    
+    # return DP[capacity] as problem required
+    return DP[capacity]
 
 
 ## Run code after defining input and solver

@@ -31,79 +31,55 @@ Constraints:
 class Solution:
   '''
   MY CODE VERSION
-  Thought:
-    Type: 0/1 Knapsack Problem; fulfill the knapsack (完全装满类型)
-    Definition: 
-      - 
-    DP template:
-      - DP[i][j]: the max number of possible solutions of adding up to j with i个 numbers
-      - Transition: DP[i][j] = DP[i-1][j-nums[i-1]] + DP[i-1][j+nums[i-1]]
-        -> 0 <= i <= n           // n numbers in total
-        -> -cap <= j <= cap      // the range of sum
-      - Init: DP = 0, DP[i][nums[0]] = 1, DP[i][-nums]
+  Problem Definition:
+    如何将该问题成功描述成0/1背包问题比前者案例416还要麻烦, 我们需要先设立一下数学推导:
+      - 假设在一个成功的正负数相加的组合当中,
+      - 其中, 所有正数之和为 X, 所有负数的绝对值之和为 Y
+      - 那么输入参数即所有正负数之和为 target = X-Y
+      - 所有数值之和即所有数值的绝对值之和为 sum = X + Y
+      - 因此可以推导出表达式 X = (target + sum) / 2
+      - 最终, X有个显性的意义, 即从nums选中若干个items, 它们的和为X, 此题目立即转换为416
+      - Finally, we define X = capacity
+  Problem Desc:
+    Type: 0/1 Knapsack 0/1背包问题
+    Prob: number of combination 组合问题
+  Template:
+    DP[j]: the number of combinations that meet the requirement at j capacity
+    Transition: DP[j] = DP[j] + DP[j-item]
+    Initial: DP=0, DP[0]=1
+    Loop: 外层nums, 内层capacity倒序
   Complexity:
-    Time: O()
-    Space: O()
-  '''
-  def findTargetSumWays0(self, nums, target):
-    n = len(nums)
-    cap = sum(nums)
-
-    if cap < target or target < -cap:
-      return 0
-
-    DP = [0] * (cap*2+1)
-    DP[cap] = 1
-
-    for i in range(1, n+1):
-      temp = [0] * (cap*2+1)
-      for j in range(nums[i-1], cap*2+1-nums[i-1]):
-        if j-nums[i-1] >= 0:
-          temp[j] += DP[j-nums[i-1]]
-        if j+nums[i-1] <= cap*2:  
-          temp[j] += DP[j+nums[i-1]]
-      DP = temp
-
-    return DP[target+cap]
-
-
-  '''
-  MY CODE VERSION
-  Thought:
-    Type: 0/1 Knapsack Problem; fulfill the knapsack (完全装满类型)
-    Definition: 
-      - 
-    DP template:
-      - DP[i][j]: the max number of possible solutions of adding up to j with i个 numbers
-      - Transition: DP[i][j] = DP[i-1][j-nums[i-1]] + DP[i-1][j+nums[i-1]]
-        -> 0 <= i <= n           // n numbers in total
-        -> -cap <= j <= cap      // the range of sum
-      - Init: DP = 0, DP[i][nums[0]] = 1, DP[i][-nums]
-  Complexity:
-    Time: O()
-    Space: O()
+    Time: O(capacity * n)
+    Space: O(capacity)
   '''
   def findTargetSumWays(self, nums, target):
-    n = len(nums)
-    cap = sum(nums)
+    # 所有正数之和, X, 不可能小于target, 因此 X >= target
+    if (target+sum(nums))/2 < target: return 0
+    # 所有正数之和*2 不可能是奇数 (因为任何数字x2之后都不能是奇数)
+    # 此处是本题最难想到的一个边界条件. 十分难理解, 但没有的话会不通过
+    if (target+sum(nums))%2: return 0
 
-    if cap < target or target < -cap:
-      return 0
+    # define the target capacity
+    capacity = int ((target+sum(nums))/2)
 
-    DP = [[0] * (cap*2+1) for _ in range(n+1)]
-    DP[0][cap] = 1
+    # initiate DP
+    DP = [0] * (capacity+1)
+    # when the target combination sum is 0, there is 0 item needed
+    DP[0] = 1
 
-    for i in range(1, n+1):
-      for j in range(0, cap*2+1):
-        if j-nums[i-1] >= 0:
-          DP[i][j] += DP[i-1][j-nums[i-1]]
-        if j+nums[i-1] <= cap*2:  
-          DP[i][j] += DP[i-1][j+nums[i-1]]
+    # loop to create DP
+    for item in nums:
+      for j in range(capacity, -1, -1):
+        # boundary condition
+        if j >= item:
+          DP[j] = DP[j] + DP[j-item]
     
-    return DP[n][target+cap]
+    # return DP[capacity] as problem required
+    return DP[capacity]
+
 
 ## Run code after defining input and solver
-input1 = [1,1,1,1,1]
-input2 = 3
+input1 = [7,9,3,8,0,2,4,8,3,9]
+input2 = 0
 solver = Solution().findTargetSumWays
 print(solver(input1, input2))

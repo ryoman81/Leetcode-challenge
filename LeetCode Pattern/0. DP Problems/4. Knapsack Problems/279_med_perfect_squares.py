@@ -19,36 +19,50 @@ Constraints:
 1 <= n <= 104
 '''
 
+import math
 
 class Solution:
   '''
-  MY CODE VERSION
-  Thought:
-    Type: 
-    Definition: 
-      - 
-    DP template:
-      - DP[j]: the least number of perfect square given the sum of j
-      - Transition: DP[j] = min(DP[j-ps[i]]) + 1
-        -> 
-      - Init: 
+  Problem Definition:
+    无限背包问题的转换
+      - 构建一个篮子 [0^2, 1^2, 2^2, ... sqrt(n)^2]
+      - 从该篮子中选择最少item数量使其相加为n
+      - 转换成题322零钱兑换问题
+  Problem Desc:
+    Type: Unbounded Knapsack 无限背包问题
+    Prob: Minimum number of items 最值问题
+  Template:
+    DP[j]: the minimum number of items needed if achieve capacity of j
+    Transition: DP[j] = min(DP[j], DP[j-item] + 1)
+    Initial: DP=INF, DP[0]=0
+    Loop: 外层平方数的篮子, 内层capacity正序
   Complexity:
-    Time: O()
-    Space: O()
+    Time: O(n * sqrt(n))
+    Space: O(n)
   '''
   def numSquares(self, n):
-    ps = [i**2 for i in range(0, 101)]
-    DP = [float('inf')] * (n+1)
+    # define the items array
+    sqrs = [i**2 for i in range(int(math.sqrt(n))+1)]
+    # define the target capacity
+    capacity = n
+
+    # initiate DP
+    DP = [float('inf')] * (capacity+1)
+    # when the target combination sum is 0, there is 0 item needed
     DP[0] = 0
 
-    for i in range(1, n+1):
-      for j in ps:
-        if i - j >= 0:
-          DP[i] = min(DP[i], DP[i-j]+1)
+    # loop to create DP
+    for item in sqrs:
+      for j in range(1, capacity+1):
+        # boundary condition
+        if j >= item:
+          DP[j] = min(DP[j], DP[j-item]+1)
+    
+    # return DP[capacity] as problem required
+    return DP[capacity]
 
-    return DP[n]
 
 ## Run code after defining input and solver
-input = 2
+input = 13
 solver = Solution().numSquares
 print(solver(input))

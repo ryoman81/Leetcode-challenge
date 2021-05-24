@@ -32,23 +32,39 @@ All the elements of nums are unique.
 class Solution:
   '''
   MY CODE VERSION
-  Thought:
-    
+  Problem Definition:
+    这是第一道涉及到排序的背包问题, 背包本身属于无限背包
+    但凡所有的为排列后的组合问题, 内外层循环需要颠倒 (自己还未证明)
+  Problem Desc:
+    Type: Unbounded Knapsack 无限背包问题
+    Prob: number of combinations with order 排序问题
+  Template:
+    DP[j]: the number of combinations that sum up to j
+    Transition: DP[j] = DP[j] + DP[j-item]
+    Initial: DP=0, DP[0]=1
+    Loop: 外层capacity, 内层item
   Complexity:
-    
+    Time: O(target * n)
+    Space: O(target)
   '''
   def combinationSum4(self, nums, target):
-    n = len(nums)
-    
-    DP = [0] * (target+1)
+    # define the target capacity
+    capacity = target
+
+    # initiate DP
+    DP = [0] * (capacity+1)
+    # when the target combination sum is 0, there is 1 solution
     DP[0] = 1
 
-    for i in range(1, target+1):
-      for j in range(1, n+1):
-        if i >= nums[j-1]:
-          DP[i] = DP[i] + DP[i-nums[j-1]]
-
-    return DP[target]
+    # loop to create DP
+    for j in range(1, capacity+1):
+      for item in nums:
+        # boundary condition
+        if j >= item:
+          DP[j] = DP[j] + DP[j-item]
+    
+    # return DP[capacity] as problem required
+    return DP[capacity]
 
 
 ## Run code after defining input and solver

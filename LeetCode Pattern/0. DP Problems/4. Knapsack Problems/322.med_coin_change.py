@@ -36,66 +36,40 @@ Constraints:
 class Solution:
   '''
   MY CODE VERSION
-  Thought:
-    Dynamic Programming template:
-      State: DP[n] - the minimum number of coins when the sum amount is n
-      Transition: DP[i] = min(DP[i-coins[j]]) + 1
-      Initial states: DP[0] = 0 - when amount is 0, no coins needed 
+  Problem Desc:
+    Type: Unbounded Knapsack 无限背包问题
+    Prob: Minimum number of items 最值问题
+  Template:
+    DP[j]: the minimum number of items needed if achieve capacity of j
+    Transition: DP[j] = min(DP[j], DP[j-item] + 1)
+    Initial: DP=INF, DP[0]=0
+    Loop: 外层coins, 内层amount正序
   Complexity:
-    Time: O(amount * nCoins)
-    Space: O(amount) - space optimization available
-  '''
-  def coinChange1(self, coins, amount):
-    n = len(coins)
-    
-    DP = [float('inf')] * (amount+1)
-    DP[0] = 0
-
-    for i in range(1, n+1):
-      for j in range(coins[i-1], amount+1):
-        DP[j] = min(DP[j], DP[j-coins[i-1]]+1)
-
-    return DP[amount] if DP[amount]!=float('inf') else -1
-
-  '''
-  MY CODE VERSION
-  Thought:
-    Dynamic Programming template:
-      State: DP[n] - the minimum number of coins when the sum amount is n
-      Transition: DP[i] = min(DP[i-coins[j]]) + 1
-      Initial states: DP[0] = 0 - when amount is 0, no coins needed 
-  Complexity:
-    Time: O(amount * nCoins)
-    Space: O(amount) - space optimization available
+    Time: O(amount * n)
+    Space: O(amount)
   '''
   def coinChange(self, coins, amount):
-    # Create DP state with 1 x (amount+1)
-    DP = [float('inf')] * (amount+1)
-    # Initialize DP at 0
+    # define the target capacity
+    capacity = amount
+
+    # initiate DP
+    DP = [float('inf')] * (capacity+1)
+    # when the target combination sum is 0, there is 0 item needed
     DP[0] = 0
 
-    # Construct DP by looping over amount dollar in range [1, amount]
-    for i in range(1, amount+1):
-      # an auxiliary variable to find the current minimum DP
-      crrMin = float('inf')
-      # loop over all coins values
-      for val in coins:
-        # if out the indexing of DP then continue to the next coin
-        if i - val < 0: continue
-        # if DP value at i-k is smaller than current min DP then update
-        if DP[i-val] < crrMin: 
-          crrMin = DP[i-val]
-      # after search for all coins, we update DP[i] as transition equation defined
-      DP[i] = crrMin + 1
-
-    # finally we return DP value at index of amount.
-    # if that value is infinite, we return -1
-    # 语义化的Python语法, 看起来真像个句子啊...
-    return DP[amount] if DP[amount] != float('inf') else -1
+    # loop to create DP
+    for item in coins:
+      for j in range(1, capacity+1):
+        # boundary condition
+        if j >= item:
+          DP[j] = min(DP[j], DP[j-item]+1)
+    
+    # return DP[capacity] as problem required
+    return DP[capacity] if DP[capacity] != float('inf') else -1
 
 
 ## Run code after defining input and solver
 input1 = [1,2,5]
 input2 = 11
-solver = Solution().coinChange1
+solver = Solution().coinChange
 print(solver(input1, input2))

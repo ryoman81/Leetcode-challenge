@@ -42,7 +42,52 @@ Constraints:
 
 class Solution:
   '''
-  MY CODE VERSION
+  TEMPLATE VERSION
+  Problem Definition:
+    该问题是所有背包问题更延展的形式, 叫做分组背包问题. 
+    分组背包问题特性是, 多个物品被划分在了多个组别里面, 在单个组别内各物品互斥
+    常见方法是在DP当中新开一维度, 表示当前组别, 就本题而言
+      - 组别: 色子, [1, d]
+      - items: 色子的面, [1, f]
+      - capacity: target
+    这类问题, 最外层循环组别, 内层按照背包类型和问题类型构建
+  Problem Desc:
+    Type: 0/1 Knapsack 0/1背包问题 分组化版本
+    Prob: maximum of combinations in order 带排序的组合问题
+  Template:
+    DP[i][j]: the maximum combination with i groups and capacity of j
+    Transition: DP[i][j] = DP[i][j] + DP[i-di][j-item]
+    Initial: DP=0, DP[0][0]=1
+    Loop: 最外层d; 内部常规: 外层capacity, 内层items
+  Complexity:
+    Time: O(d * f * target)
+    Space: O(d * target)
+  '''
+  def numRollsToTarget(self, d, f, target):
+    # define the target capacity
+    capacity = target
+
+    # initiate DP
+    DP = [[0] * (capacity+1) for _ in range(d+1)]
+    # with no dice and 0 capacity, there is one solution
+    DP[0][0] = 1
+
+    # loop to create DP
+    # outside loop over all groups aka the dices
+    for i in range(1, d+1):
+      # inside loop is the same as template of combination in order
+      for j in range(1, capacity+1):
+        for item in range(1, f+1):
+          # boundary condition
+          if j >= item:
+            # modulo by 10**9 + 7 as problem asked
+            DP[i][j] = (DP[i][j] + DP[i-1][j-item]) % (10**9 + 7) 
+
+    # return DP[d][capacity] as problem required
+    return DP[d][capacity]
+
+  '''
+  PREVIOUS VERSION
   Thought:
     Dynamic Programming template:
       State: DP[i][j] - we have through i dices, and the current sum is j
@@ -60,7 +105,7 @@ class Solution:
     Time: O(d*target*f)
     Space: O(d*target) - space optimization available
   '''
-  def numRollsToTarget(self, d, f, target):
+  def numRollsToTarget0(self, d, f, target):
     # Define the state
     # We create a (d+1) X (target+1) DP matrix which one space more in each dimension
     # since we want the index is the same as we defined
@@ -84,7 +129,7 @@ class Solution:
 
 ## Run code after defining input and solver
 input1 = 2
-input2 = 12
-input3 = 8
+input2 = 6
+input3 = 7
 solver = Solution().numRollsToTarget
 print(solver(input1, input2, input3))

@@ -59,19 +59,31 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 
 **4. Knapsack Problems 背包问题**
 
-详细解读参考分类文档.
+详细解读参考分类文档. (总算做完了, 请务必先学习, 再按照顺序练习. 做过的最长的一个专题)
 
-- 416. Partition equal subset sum (med)
-- 494. Target Sum (med)
-- 474. Ones and zeros
-- 377. Combination sum IV
-- 1155. Number of dice rolls with target sum (med)
-- 1049. Last stone weight II
-- 279. Perfect squares (med)
-- 322. Coin change (med)
-- 518. Coin change II 
+- 322. Coin Change
+- 279. Perfect Squares
+- 518. Coin Change II
+- 377. Combination Sum IV
+- 416. Partition Equal Subset Sum
+- 494. Target Sum
+- 1049. Last Stone Weight II
+- 474. Ones and Zeros
+- 1155. Number of Dice Rolls with Target Sum
 
 **5. Substring Problems 字符串, 子集, 及回文类DP问题**
+
+题目众多, 也另立文档参考.
+
+- 5. Longest palindromic substring (med)
+- 516. Longest palindromic subsequence (med)
+- 647. Palindromic substrings (med)
+
+- 1143. Longest common subsequence (med)
+- 1092. Shortest common supersequence (med)
+
+- 72. Edit distance (hard)
+- 115. Distinct subsequences (hard)
 
 
 ## **参考链接 Reference:**

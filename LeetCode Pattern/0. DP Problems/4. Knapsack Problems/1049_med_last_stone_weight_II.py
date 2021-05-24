@@ -40,22 +40,43 @@ Constraints:
 class Solution:
   '''
   MY CODE VERSION
-  Thought:
-    
+  Problem Definition:
+    该问题描述会和416非常相似:
+      - 问题可转化为, 如何从stones选取items, 使其和最接近于capacity
+      - 该问题的capacity为 sum/2
+      - 即选取部分items使其总和最接近于capacity, 因此另一部items总和也将接近于capacity
+      - 最终将两部分相互碰撞抵消后, 剩余石头重量达到最小
+  Problem Desc:
+    Type: 0/1 Knapsack 0/1背包问题
+    Prob: maximum weight 最值问题
+  Template:
+    DP[j]: the maximum weight of selected stones when putting into a j size knapsack
+    Transition: DP[j] = max(DP[j], DP[j-item] + item)
+    Initial: DP=0, DP[0]=0
+    Loop: 外层stones, 内层capacity倒序
   Complexity:
-    
+    Time: O(capacity * n)
+    Space: O(capacity)
   '''
   def lastStoneWeightII(self, stones):
-    n = len(stones)
-    target = int(sum(stones) / 2)
+    # define the target capacity
+    capacity = int( sum(stones)/2 )
 
-    DP = [0] * (target + 1)
+    # initiate DP
+    DP = [0] * (capacity+1)
+    # when the capacity is 0, there is 0 weight
+    DP[0] = 0
+    
+    # loop to create DP
+    for item in stones:
+      for j in range(capacity, -1, -1):
+        if j >= item:
+          DP[j] = max(DP[j], DP[j-item]+item)
 
-    for i in range(1, n+1):
-      for j in range(target, stones[i-1]-1, -1):
-        DP[j] = max(DP[j], DP[j-stones[i-1]]+stones[i-1])
-
-    return sum(stones) - DP[target] * 2
+    # DP[capacity] 为装入一个 sum/2 大小背包的最大重量
+    # 因此另一半的重量即为 sum - DP[capacity] (这一半重量大于等于另一半)
+    # 两半相减即为中和掉所有石头后剩余的重量
+    return (sum(stones) - DP[capacity]) - DP[capacity]
 
 
 ## Run code after defining input and solver

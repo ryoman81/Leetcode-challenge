@@ -22,43 +22,47 @@ Constraints:
 class Solution:
   '''
   MY CODE VERSION
-  Thought:
-    Type: 0/1 Knapsack Problem; fulfill the knapsack (完全装满类型)
-    Definition: 
-      - Find N items from nums that sum up to the value of sum(nums)/2
-      - In this problem, the weight equals to the value of each item
-    DP template:
-      - DP[j]: the best value at capacity of j (we will see that DP[j] = j or -inf)
-      - Transition: DP[j] = max(DP[j], DP[j-nums[i-1]]+nums[i-1])
-        -> nums array has one index lag back to DP index
-        -> the weight and value is equal in this problem
-      - Init: DP = -INF, DP[0] = 0
+  Problem Definition:
+    如何将该问题成功描述成0/1背包问题是难点. 该问题的思路是:
+      - 欲将数组划分成和相等的两部分, 可转换为, 
+        是否能从数组中选择部分元素, 他们的和为sum(nums)/2
+      - 如果sum(nums)/2为奇数, 那么肯定不能划分成两相等部分
+      - 该问题的capacity = sum(nums) / 2
+  Problem Desc:
+    Type: 0/1 Knapsack 0/1背包问题
+    Prob: if exist 存在或组合问题
+  Template:
+    DP[j]: the number of combinations that meet the requirement at j capacity
+    Transition: DP[j] = DP[j] + DP[j-item]
+    Initial: DP=0, DP[0]=1
+    Loop: 外层nums, 内层capacity倒序
   Complexity:
-    Time: O(n*sum/2)
-    Space: O(sum/2)
+    Time: O(capacity * n)
+    Space: O(capacity)
   '''
-  def canPartition0(self, nums):
-    n = len(nums)
-    # if the sum of all items is odd, then it can never divided into two equal half
+  def canPartition(self, nums):
+    # 如果数组总和的一半是奇数, 那么不可能分割成两个相等整数
     if sum(nums) % 2: return False
 
-    # find the capacity of each half of the sub-array
+    # define the target capacity
     capacity = int (sum(nums) / 2)
 
-    # initialize DP as 0/1 knapsack template of 完全装满类型
-    DP = [float('-inf')] * (capacity+1)
-    DP[0] = 0
+    # initiate DP
+    DP = [0] * (capacity+1)
+    # when the capacity is 0, there is 1 possibility (by choosing no item)
+    DP[0] = 1
     
-    # loop over i of each number, and j of each possible capacity
-    for i in range(1, n+1):
-      # as 0/1 knapsack problem, the inner loop should be reverse
-      for j in range(capacity, nums[i-1]-1, -1):
-        # the index of nums array has one lag back
-        DP[j] = max(DP[j], DP[j-nums[i-1]] + nums[i-1])
-    # if DP[capacity] has a valid value, it must be capacity, otherwise -inf
+    # loop to create DP
+    for item in nums:
+      for j in range(capacity, -1, -1):
+        if j >= item:
+          DP[j] = DP[j] + DP[j-item]
+
+    # return DP[capacity] as problem required
     return True if DP[capacity]>0 else False
+
 
 ## Run code after defining input and solver
 input = [1,1,1,2,3]
-solver = Solution().canPartition0
+solver = Solution().canPartition
 print(solver(input))
