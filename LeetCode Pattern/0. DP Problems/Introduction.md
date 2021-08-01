@@ -76,9 +76,13 @@ dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 题目众多, 也另立文档参考.
 
 - 5. Longest palindromic substring (med)
-- 516. Longest palindromic subsequence (med)
 - 647. Palindromic substrings (med)
+- 516. Longest palindromic subsequence (med)
+- 131. Palindrome Partition (med)
+- 132. Palindrome Partition II (hard)
 
+- 647. Longest continuous increasing subsequence (easy)
+- 300. Longest increasing subsequence (med)
 - 1143. Longest common subsequence (med)
 - 1092. Shortest common supersequence (med)
 
