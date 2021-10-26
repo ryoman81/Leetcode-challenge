@@ -23,3 +23,5 @@ var plusOne = function(digits) {
     
     return [1, ...digits];
 };
+
+console.log(plusOne([1,2,9]))

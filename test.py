@@ -1,5 +1,21 @@
-import timeit
+def fibonacci(num):
+    cache = {}
 
-time = timeit.timeit('"-".join(str(n) for n in range(10000))', number=10000)
+    def recursion(n):
+        if n in cache:
+            return cache[n]
 
-print(time)
+        if n < 2:
+            cache[n] = n
+            return n
+
+        cache[n] = recursion(n-1) + recursion(n-2)
+        return cache[n]
+
+    recursion(num)
+
+    return cache[num]
+
+
+result = fibonacci(5)
+print(result)
